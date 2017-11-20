@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="../../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button v-on:click="message='miaov'">点击改变数据</button>
+			<button v-on:click="changeMessage">点击改变数据</button>
+			{{message}}
+		</div>
+		<script>
+			/*
+				绑定事件 指令 v-on
+					语法：v-on:事件名 = '表达式|事件处理函数'
+
+				把定义的事件处理函数放在一个地方 选项对象中的methods中
+
+				click
+				mouseover
+				mouseout
+			*/
+
+			// 内部会把data中的数据放在new Vue创建的实例身上
+
+			let vm = new Vue({
+				el:'#app',
+				data: {  // 用来渲染到页面中的数据的
+					message: 'hello'
+				},
+				methods: {
+					changeMessage: function (){  // 函数
+						console.log(123);
+						console.log(this);  // 指向这个方法所在的对象（实例）
+						
+						this.message = 'miaov'	
+					}
+				}
+			});
+
+			console.log(vm);
+
+		</script>
+	</body>
+</html>

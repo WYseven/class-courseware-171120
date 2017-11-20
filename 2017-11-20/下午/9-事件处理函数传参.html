@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			#app div {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script src="../../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<li 
+					@click="getIndex(index,$event)" 
+					v-for="value,index in list"
+				>
+					{{value}}{{index}}
+				</li>
+			</ul>
+		</div>
+		<script>
+
+			/*
+				语法：
+					@click="事件处理函数(传参,$event)" 模板中有一个全局的变量 $event
+					@click="事件处理函数"  事件对象是事件处理函数的第一个参数
+			*/
+
+			new Vue({
+				el: '#app',
+				data: {
+					list: ['a','b','c']
+				},
+				methods : {
+					getIndex (i,ev) {  
+						console.log(i);
+						console.log(ev);
+					}
+				}
+			})
+
+
+		</script>
+	</body>
+</html>

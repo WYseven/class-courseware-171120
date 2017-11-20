@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="../../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{message}}
+			<span v-show="isShow">hello,用来测试显示隐藏的</span>
+			<ul v-show="arr.length">
+				<li>123</li>
+				<li>123</li>
+			</ul>
+			<div v-if="isShow">我来测试v-if</div>
+		</div>
+		<script>
+			/*
+				v-show 切换display为block还是none
+				语法：v-show="表达式"
+					表达式的值为true，元素显示
+					表达式的值为false，元素不显示
+				v-if
+					语法：v-show="表达式"
+						表达式的值为true，元素渲染
+						表达式的值为false，元素不渲染
+
+				切换元素显示隐藏 v-show
+				数据没有就不渲染结构的 v-if
+			*/
+			let arr = [];
+			let obj = {
+				a:1
+			}
+
+			new Vue({
+				el:'#app',
+				data: {
+					message: 'hello123',
+					obj:obj,
+					arr:arr,
+					isShow: false
+				}
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			#app div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				display: none;
+			}
+			#app .show {
+				display: block;
+			}
+			.yellow {
+				background: yellow;
+			}
+		</style>
+		<script src="../../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- <button>按钮1</button>
+			<button>按钮2</button>
+			<button>按钮3</button>
+			<div>按钮1</div>
+			<div>按钮2</div>
+			<div>按钮3</div> -->
+
+			<button 
+				@click='changeIndex(i)' 
+				v-for="item,i in list"
+				:class="{yellow: i === showIndex}"
+			>
+				{{item}}
+			</button>
+			<div :class="{show: i === showIndex}" class="abc"  v-for="item,i in list">{{item}}</div>
+		</div>
+		<script>
+			var arr = ['按钮1','按钮2', '按钮3'];
+
+		// 在模板中循环，在循环的过程，拿到下标和showIndex进行对比，如果相同就添加class
+
+		/*
+			操作样式
+				class
+					动态的计算
+						语法：:class="{class名字:表达式}"
+							如果表达式为true，则这个元素添加前面的class
+							如果表达式为false，则不添加
+				style
+		*/
+
+			new Vue({
+				el: '#app',
+				data: {
+					list: arr,
+					showIndex: 0  // 用来确定哪一个应该是显示的
+				},
+				methods: {
+					changeIndex(index){
+						this.showIndex = index;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

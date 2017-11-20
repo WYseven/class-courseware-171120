@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			#app div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				display: none;
+			}
+			#app .show {
+				display: block;
+			}
+			.yellow {
+				background: yellow;
+			}
+		</style>
+		<script src="../../src/vue.js"></script>
+	</head>
+
+	<body>
+		<button id="btn">按钮</button>
+		<script>
+			// 文档对象模型
+
+			let btn = document.getElementById("btn");  // 获取DOM tree 的某个节点 返回的是对象
+
+			/*btn.onclick = function (){
+				alert(1)
+			}*/
+
+			// 使用addEventListener绑定事件
+			/*
+				{
+					click: [fn,fn,fn],
+					mousever: [fn,fn,fn]
+				}
+
+				getEventListeners(btn); // 在chrome的控制台中打
+			*/
+
+			btn.addEventListener('click',function (){
+				alert('123')	
+			})
+			btn.addEventListener('click',function (){
+				alert('123')	
+			})
+			btn.addEventListener('click',function (){
+				alert('123')	
+			})
+			btn.addEventListener('mouseover',function (){
+				alert('123')	
+			})
+			btn.addEventListener('mouseover',function (){
+				alert('123')	
+			})
+			btn.addEventListener('mouseover',function (){
+				alert('123')	
+			})
+
+			console.dir(btn);
+
+			btn.style.background = 'red';
+
+		</script>
+	</body>
+</html>

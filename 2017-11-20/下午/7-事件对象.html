@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<button id="btn">按钮</button>
+		<script>
+			let btn = document.getElementById("btn");
+
+			//函数就是监听器
+			// btn发布了click事件，被监听器监听到了，触发
+			btn.addEventListener('click',function (a){
+				// 知道这次事件触发的细节 事件对象	
+				// 事件对象是内部在调用这个事件处理函数的时候，作为第一个参数传过来
+				// 开发者所能做的就是通过一个形参接收
+				console.log(a);
+			})
+
+		</script>
+	</body>
+</html>
