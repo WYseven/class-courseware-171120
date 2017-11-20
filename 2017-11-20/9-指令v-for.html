@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul id="list">
+				<li v-for="item,i in list">下标{{i}}+值{{item}}</li>
+			</ul>
+		</div>
+		<script>
+
+			/*
+				指令
+				v-for 做循环
+				语法:
+					v-for="value,key in 数组"
+					v-for="value in 数组"
+					v-for="value,key of 数组"
+					v-for="value of 数组"
+			*/
+
+			let arr = ['miaov','ketang'];
+			// 循环 遍历 枚举 一个数组 拿两种值： 数组中的每一个值；值对应的下标； key value
+
+			let vm = new Vue({
+				el:'#app',
+				data: {
+					list: arr
+				}
+			});
+
+
+		</script>
+	</body>
+</html>

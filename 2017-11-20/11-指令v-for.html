@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul id="list">
+				<li v-for="(value,i) in list">
+					<div>姓名：{{value.name}}</div>
+					<div>性别：{{value.age}}</div>
+					<div>年龄：{{value.sex}}</div>
+				</li>
+			</ul>
+		</div>
+		<script>
+
+			let arr = [
+				{
+					name: 'leo',
+					age: 30,
+					sex:'男'
+				},{
+					name: 'momo',
+					age: 28,
+					sex: '男'
+				},{
+					name: 'momo',
+					age: 28,
+					sex: '男'
+				},{
+					name: 'momo',
+					age: 28,
+					sex: '男'
+				},{
+					name: 'momo',
+					age: 28,
+					sex: '男'
+				},{
+					name: 'momo',
+					age: 28,
+					sex: '男'
+				}
+			];
+
+			let vm = new Vue({
+				el:'#app',
+				data: {
+					list: arr 
+				}
+			});
+
+
+		</script>
+	</body>
+</html>

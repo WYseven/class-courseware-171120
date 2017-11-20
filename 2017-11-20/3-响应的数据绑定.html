@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<ul id="list">
+			<!-- <li>miaov</li>
+			<li>ketang</li> -->
+		</ul>
+		<button id="add">添加</button>
+		<script>
+			let arr = ['miaov','ketang'];
+
+			// 根据数据生成li 把数据填充到模板中
+
+			let newArr = arr.map(function (item){
+				return `<li>${item}</li>`	
+			})
+
+			console.log(newArr.join(''));
+
+			let list = document.getElementById("list");
+
+			list.innerHTML = newArr.join('');
+
+			let add = document.getElementById('add');
+
+			// 和用户交互会产生数据
+
+			add.onclick = function (){
+				// 添加abc
+				arr.push('abc');
+
+				// 再重新渲染页面	
+			}
+
+		</script>
+	</body>
+</html>

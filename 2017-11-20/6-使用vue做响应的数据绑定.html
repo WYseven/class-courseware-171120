@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{ message }}
+			{{ arr }}
+			{{ 1+1 }}
+			{{ [1,2].map((item) => item*3) }}
+			{{ true ? 'hello' : '错误' }}
+		</div>
+		<script>
+			// 在模板中渲染数据 {{任意表达式}}
+			let arr = ['miaov','ketang'];
+
+			// 启动应用
+			// 选项对象
+			new Vue({
+				el:'#app', // document.getELementById('list')  // element  模板位置
+				data: {  // 要呈现的数据
+					arr:arr,
+					message: 'hello'
+				}
+			});
+
+
+		</script>
+	</body>
+</html>

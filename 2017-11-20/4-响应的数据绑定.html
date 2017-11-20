@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<ul id="list">
+			<!-- <li>miaov</li>
+			<li>ketang</li> -->
+		</ul>
+		<button id="add">添加</button>
+		<button id="remove">删除</button>
+		<script>
+			let arr = ['miaov','ketang'];
+
+			// 根据数据生成li 把数据填充到模板中
+
+			function render(d){
+				let newArr = arr.map(function (item){
+					return `<li>${item}</li>`	
+				})	
+				list.innerHTML = newArr.join('');
+			}
+
+			let list = document.getElementById("list");
+
+			render(arr);// 初始展示
+
+			let add = document.getElementById('add');
+
+			// 和用户交互会产生数据
+
+			add.onclick = function (){
+				// 添加abc
+				arr.push('abc');
+
+				// 再重新渲染页面
+
+				render(arr);
+
+			}
+
+			let remove = document.getElementById('remove');
+
+			remove.onclick = function (){
+			
+				arr.pop();
+
+				// 再重新渲染页面
+
+				render(arr);
+
+			}
+
+			// 当每一次数据发生变化，页面就会自动更新，用到了响应的数据绑定
+
+		</script>
+	</body>
+</html>

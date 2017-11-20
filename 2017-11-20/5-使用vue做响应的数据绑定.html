@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{ message }}
+			message
+		</div>
+		<script>
+
+			let arr = ['miaov','ketang'];
+
+			// 启动应用
+			// 选项对象
+	new Vue({
+		el:'#app', // document.getELementById('list')  // element  模板位置
+		data: {  // 要呈现的数据
+			arr:arr,
+			message: 'hello'
+		}
+	});
+
+	// 写任意表达式 表达式可以求出值
+
+	let a = 'miaov';
+
+	let str = `<div>${a}${1+1}${[1,2,3].map((item) => item*3)}</div>`;
+
+	console.log(str);
+
+
+		</script>
+	</body>
+</html>

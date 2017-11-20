@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="abc" ketang="miaov" v-bind:abc='10'></div>
+		<script>
+			/*
+				1. 响应的数据绑定
+					注意力都关注在数据的变化（业务逻辑）
+					只要数据发生变化，页面会自动更新
+				2. 指令
+					vue赋予这些指令特殊的功能
+					v-bind
+					v-for
+				3. 插值
+					{{}}
+			*/
+
+			// 作用域 变量的作用（访问）范围
+
+			var names = '全国张三'
+
+			function henan(){
+				var names = '河南张三';
+				console.log(names);
+			}
+
+			function hebei(){
+				var names = '河北张三'	
+			}
+
+			henan();
+
+			console.log(names);
+
+
+		</script>
+	</body>
+</html>

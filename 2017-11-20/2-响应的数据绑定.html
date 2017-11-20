@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<ul id="list">
+			<!-- <li>miaov</li>
+			<li>ketang</li> -->
+		</ul>
+		<script>
+			let arr = ['miaov','ketang'];
+
+			// 根据数据生成li 把数据填充到模板中
+
+			let newArr = arr.map(function (item){
+				return `<li>${item}</li>`	
+			})
+
+			console.log(newArr.join(''));
+
+			let list = document.getElementById("list");
+
+			list.innerHTML = newArr.join('')
+
+		</script>
+	</body>
+</html>
