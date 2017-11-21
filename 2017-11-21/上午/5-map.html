@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			// 遍历 枚举 循环 数组 在干什么？
+			// 拿到数组每一个值，以及值对应的下标
+			let arr = ['a','b','c'];
+
+			// 做遍历用的 map
+			// 原数组有几项，返回的数组就有几项
+			// map返回的新数组中的值是回调函数执行后的返回值
+			let newArr = arr.map(function (item,index){
+				console.log(item,index);
+				return item+1;
+			})
+
+			console.log(newArr);
+
+			/*
+				undefined
+				出现undefined的情况：
+					1. 定义变量未赋值
+					2. 函数没有返回值
+					3. 对象没有指定属性
+			*/
+
+			let miaov;
+			function fn(){
+					
+			}
+			console.log(miaov);
+			console.log(fn());
+			let o = {};
+
+			console.log(o.a);
+
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

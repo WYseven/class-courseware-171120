@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			// 遍历 枚举 循环 数组 在干什么？
+			// 拿到数组每一个值，以及值对应的下标
+			let arr = [{
+				age:30,
+				name:'leo',
+				weight: 100
+			},{
+				age:45,
+				name:'leo',
+				weight: 100
+			},{
+				age:37,
+				name:'leo',
+				weight: 100
+			},{
+				age:34,
+				name:'leo',
+				weight: 100
+			},{
+				age:20,
+				name:'leo',
+				weight: 100
+			},{
+				age:22,
+				name:'leo',
+				weight: 100
+			}];
+
+			// 计算这些人的年龄总和？以及体重的总和？
+			let ages = 0;
+			let weights = 0;
+			arr.forEach(function (item){
+				ages += item.age;
+				weights += item.weight;	
+			})
+
+			console.log(ages,weights);
+
+			// reduce()
+
+			arr.reduce(function (item1,item2){
+					
+			})
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

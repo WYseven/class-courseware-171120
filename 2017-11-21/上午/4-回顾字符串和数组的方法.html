@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			// 遍历 枚举 循环 数组 在干什么？
+			// 拿到数组每一个值，以及值对应的下标
+			let arr = ['a','b','c'];
+
+			/*for( var i = 0; i < arr.length; i++ ){
+				fn(arr[i],i)
+			}
+
+			function fn(item,index){
+
+				console.log(123);
+				console.log(123);
+				console.log(123);
+				console.log(123);
+				console.log(123);
+				console.log(123);
+			}*/
+
+			// 一个方法forEach,用来枚举数组
+
+			arr.forEach(function (item,index){
+				console.log(item,index);
+				console.log(item,index);
+			});
+			
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

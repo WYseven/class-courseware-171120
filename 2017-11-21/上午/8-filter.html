@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			// 遍历 枚举 循环 数组 在干什么？
+			// 拿到数组每一个值，以及值对应的下标
+			let arr = [{
+				age:30,
+				name:'leo'
+			},{
+				age:45,
+				name:'leo'
+			},{
+				age:37,
+				name:'leo'
+			},{
+				age:34,
+				name:'leo'
+			},{
+				age:20,
+				name:'leo'
+			},{
+				age:22,
+				name:'leo'
+			}];
+
+			// 删选出30岁以下的
+
+			let newArr = arr.filter(function (item){
+				return item.age <= 30
+			})
+
+			console.log(newArr);
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

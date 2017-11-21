@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			let arr = [1,2,3,4];
+			// 把数组每一项累加
+			// 上一次累加的结果作为下一个的初始值
+			// 回调函数的第一个参数，就是上一次函数执行后的返回值
+
+			/*
+				reduce
+				参数：
+					第一个参数是函数
+					第二参数是初始值
+			*/
+
+			let total = arr.reduce(function (item1,item2){
+				console.log(item1,item2);
+				return item1+item2	
+			},100)
+
+			console.log(total);
+
+			let arr2 = [{a:1,b:3},{a:2,b:4},{a:3,b:5}];
+
+			let m = arr2.reduce(function (item1,item2){
+				console.log(item1,item2);
+				return {
+					a: item1.a + item2.a,
+					b: item1.b + item2.b
+				}	
+			},{a:1000,b:1000})
+
+			console.log(m);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

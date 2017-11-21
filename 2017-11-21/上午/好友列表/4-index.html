@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li,
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			.list>div {
+				margin-bottom: 10px;
+			}
+			.list .show {
+				display: block;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="./css/qq.css" />
+		<script src="../src/vue.js"></script>
+	</head>
+
+	<body onselectstart="return false;">
+		<div class="wrap" id="app">
+			<div class="list">
+				<div v-for="item,index in QQList">
+					<h2 @click="showList(index)"><span></span>{{item.title}}</h2>
+					<ul :class="{show: showIndex === index}">
+						<li v-for="value in item.list">{{value.name}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="./data.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					QQList: data,
+					showIndex: -1
+				},
+				methods: {
+					showList (i) {
+						// 点击的是同一个
+						/*if(this.showIndex === i){
+							this.showIndex = -1;
+						}else{
+							this.showIndex = i;
+						}*/
+
+						this.showIndex = this.showIndex === i ? -1 : i
+						
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

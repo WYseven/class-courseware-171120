@@ -1,0 +1,20 @@
+1.学习前几周的，自定义属性this 不清楚？
+
+2.函数传参，callback  bind 学习的都分不清了？
+
+3.是不是函数的执行都要，函数名加()括号？
+
+4.window的location 地址栏的信息怎么拿，怎么放？
+
+5.面向对象 new之后的props不明白是什么意思？
+
+6.面向对象 原型和原型链，原型继承还是不理解？
+
+7.元素的距离，比如offsetLeft scrollLeft pageXoffset 是几大类？ 都是包括哪些的距离？
+
+8.本地存储 localStorage怎么添加删除？
+
+9.node的 require引入？ 完全不明白 node.js
+
+10.react的路由 不明白？
+
