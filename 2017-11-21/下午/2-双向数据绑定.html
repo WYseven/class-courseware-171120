@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input v-model="messgae" type="text" />
+			<input v-model="checked" type="checkbox" />
+			<p>{{messgae}}</p>
+			<p>{{checked}}</p>
+		</div>
+		<script>
+			// 双向数据绑定
+
+			// 数据 -> 模板 -> 数据
+
+			// 如果遇到的是input textarea 不需要手动的写input监听
+			// v-model指令
+			// 根据input的类型，把v-model转成不同的值
+			// input为text，转成value
+			// input为checkbox,radio, 转成checked
+
+			// MVVM模式
+			/*
+				M model 数据
+				V view 视图
+				VM view-model 视图-模型
+			*/
+
+			let messgae = 'hello';
+			// vm
+			new Vue({
+				el: '#app',
+				data: {
+					messgae: messgae,
+					checked: false
+				}
+			})
+
+		</script>
+	</body>
+</html>

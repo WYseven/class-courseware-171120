@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			let o = {a:1};
+			o.b = 1;
+			o['c']  =2;
+
+			o.b = 10;
+
+			console.log(o.b);
+
+			// 定义属性的时候，属性对应的值不能被改写
+			// 使用Object.defineProperty()
+			/*
+				Object.defineProperty(对象,key,描述)
+				描述是一个对象：
+					https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+			*/
+
+			Object.defineProperty(o,'miaov',{
+				value: 'ketang',
+				writable: false,
+				configurable: false,
+				enumerable:true
+			})
+
+			o.miaov = 123;
+
+			delete o.miaov;
+
+			for(var attr in o){
+				console.log(attr);
+			}
+
+			console.log(o);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

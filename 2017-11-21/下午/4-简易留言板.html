@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input v-model="messgae" @keydown.enter="addMessage" />
+			<ul>
+				<li v-for="item,i in arr">
+					{{item}}
+					<button @click="remove(i)">删除</button>
+				</li>
+			</ul>
+		</div>
+		<script>
+
+
+			new Vue({
+				el: '#app',
+				data: {
+					messgae: '',
+					arr:[]
+				},
+				methods: {
+					addMessage (ev) {
+						// 只需要写逻辑，不需要处理和事件相关的
+						console.log(this.messgae);
+
+						this.arr.push(this.messgae)
+						this.messgae = '';
+						
+					},
+					remove(i){
+						this.arr.splice(i,1)
+					}
+				}
+			})
+
+		</script>
+	</body>
+</html>

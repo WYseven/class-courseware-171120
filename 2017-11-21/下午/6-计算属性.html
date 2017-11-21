@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			姓名：<input type="text" v-model="userName" />
+			年龄：<input type="text" v-model="userAge" />
+			<input type="button" @click="addUserHandle" value="添加" />
+			<ul>
+				<li v-for="item,index in users">
+					姓名:{{item.name}}
+					年龄:{{item.age}}
+				</li>
+			</ul>
+			<p>统计：以上人的总年龄为{{totalAge}}岁</p>
+			<p>上面的人总年龄为{{totalAge}}岁</p>
+		</div>
+		<script>
+			// 尽可能少的在模板中写业务逻辑，写的多，模板会很臃肿
+			// 计算属性 就是一个属性 用来写关于data的一些逻辑的
+			// 把处理data的逻辑放在计算属性中写
+			// computed 计算
+			let data = [
+				{
+					name:'leo',
+					age:30
+				},
+				{
+					name:'leo',
+					age:30
+				},{
+					name:'leo',
+					age: "30"
+				}
+			]
+
+			let vm = new Vue({
+				el:'#app',
+				data: {
+					users: data,
+					userName: '',
+					userAge: ''
+				},
+				computed: {
+					// 计算属性中的值依赖于data中的值，如果data的值发生变化，那么计算属性就会重新计算
+					// 这个计算属性的值，是函数的返回值
+					totalAge: function (){
+						// 写业务逻辑 this => 实例
+
+						let m = this.users.reduce(function (n,item){
+							return n + parseInt(item.age)
+						},0)
+
+
+						return m
+					}
+				},
+				methods: {
+					addUserHandle () {
+						this.users.push({
+							name: this.userName,
+							age: this.userAge
+						})
+					}
+				}
+			})
+
+			console.log(vm);
+
+		</script>
+	</body>
+</html>

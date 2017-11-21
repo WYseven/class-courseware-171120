@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			/*
+				存 取  描述
+				存 会触发setter对应的函数set
+				取 会触发getter对应的函数get
+				Object.defineProperty(对象,属性,{
+					get(){
+						
+					},
+					set(){
+	
+					}
+				})
+			*/
+
+			let o = {}
+			let val = 'ketang';
+			Object.defineProperty(o,'miaov', {
+				get: function proxyGetter(){
+					return val;
+				},
+				set :function proxyGetter(newValue){
+					console.log(newValue);
+					val = newValue;
+				}
+			})
+
+			console.log(o);
+
+			o.miaov = 123;
+
+			console.log(o.miaov);
+
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

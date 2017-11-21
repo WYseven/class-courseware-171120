@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				函数的调用方式：
+					1. 直接调用 this => window
+					2. 事件触发调用 this => 触发事件的元素
+					3. new 调用 this => 通过函数创建实例
+					4. 定时器 this => window
+					5. call/apply this => call/apply的第一个参数
+					6. 作为对象的方法 this => 调用方法的对象
+
+				函数中this的值不是定义函数的时候确定的，而是在调用的时候确定的
+
+				ES6 箭头函数
+				() => {}
+
+				箭头函数中this是在定义的时候绑定这个箭头函数所在作用域的this的值
+
+				箭头函数中this是在定义的时候就确定了
+				this的值是这个箭头函数所在作用域中的this
+
+			*/
+			/*function fn(){
+				console.log(this);
+			}
+			let o = {f:fn,a:1}
+			o.f()*/
+
+			document.onclick  =  () => {
+				console.log(this);
+				setTimeout( () => {
+					console.log(this);	
+				},1000)
+			}
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

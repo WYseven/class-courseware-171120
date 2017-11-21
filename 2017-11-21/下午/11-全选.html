@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="button" @click="abc=123" />
+			{{abc}}
+		</div>
+		<script>
+
+
+			let vm = new Vue({
+				el: '#app',
+				computed: {
+					/*abc:function (){  // 默认这个函数是get，就是取值的是触发的函数
+						return 1	
+					}*/
+					abc: {
+						get(){
+							return 1
+						},
+						set(newValue){
+							console.log(newValue);
+						}
+					}
+				}
+			})
+
+
+
+		</script>
+	</body>
+</html>

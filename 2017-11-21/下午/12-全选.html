@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>
+				<input type="checkbox" v-model='isAllChecked' />
+				全选
+			</div>
+			<hr>
+			<ul>
+				<li v-for="item in users">
+					<input type="checkbox" v-model="item.checked" />
+					{{item.name}}
+				</li>
+			</ul>
+		</div>
+		<script>
+
+			let data = [
+				{
+					name: 'A',
+					checked: true  // 选中还是不选中
+				},
+				{
+					name: 'B',
+					checked: true
+				}
+			]
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					users: data
+				},
+				computed: {
+					isAllChecked:{
+						get(){  // 取值的时候触发
+							let newArr = this.users.filter(function (item){
+								return item.checked
+							})
+
+							return newArr.length === this.users.length;
+						},
+						//设置值作为参数传过来
+						set(newValue){ // 设置值触发
+							console.log(newValue);
+							this.users.forEach(function (item){
+								item.checked = newValue;
+							})
+						}
+					}
+				}
+			})
+
+			console.log(vm);
+
+
+
+		</script>
+	</body>
+</html>

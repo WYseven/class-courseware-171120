@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="changeMessage">改变数据</button>
+			<input :value="messgae" @input='textChangeMessageHandle' type="text" />
+			<p>{{messgae}}</p>
+		</div>
+		<script>
+			// 双向数据绑定
+
+			// 数据 -> 模板 -> 数据
+
+			// 如果遇到的是input textarea 不需要手动的写input监听
+			// v-model指令
+
+			let messgae = 'hello';
+
+			new Vue({
+				el: '#app',
+				data: {
+					messgae: messgae
+				},
+				methods: {
+					changeMessage(){
+						this.messgae = 'abc'
+					},
+					textChangeMessageHandle(ev){
+						this.messgae = ev.target.value;
+					}
+				}
+			})
+
+		</script>
+	</body>
+</html>

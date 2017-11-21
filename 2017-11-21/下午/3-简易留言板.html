@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input v-model="messgae" @keydown.enter="addMessage" />
+			<ul>
+				<li>123</li>
+				<li>123</li>
+				<li>123</li>
+			</ul>
+		</div>
+		<script>
+			// 一上来把数据中message通过v-model绑定在input的value上
+			// v-model会监控value的变化，立马更新message的值
+
+			// 事件修饰符
+			// 语法： @事件名.修饰符 = '事件处理函数'
+			// https://cn.vuejs.org/v2/guide/events.html
+
+			new Vue({
+				el: '#app',
+				data: {
+					messgae: '',
+				},
+				methods: {
+					addMessage (ev) {
+						// 只需要写逻辑，不需要处理和事件相关的
+						console.log(this.messgae);
+						
+					}
+				}
+			})
+
+		</script>
+	</body>
+</html>
