@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				http://www.baidu.com:80/miaov/index.html
+				https://www.baidu.com/s?wd=111#abc
+			*/
+
+			/*
+				search 查询数据 发送给服务端
+				hash 不发送给服务端 定位本页面资源
+			*/
+
+			// file:///F:/miaov/2017-11-20%E7%8F%AD%E7%BA%A7/2017-11-22/1-%E5%AE%8C%E6%95%B4%E7%9A%84URL.html
+		alert(1)
+
+		// 要想在页面中去向服务器拿数据，需要在页面内发送请求，使用一种技术、ajax
+		let xhr = new XMLHttpRequest();
+
+		let url = '127.0.0.1/miaov/1.php'
+
+		xhr.open('get',url,true);
+
+		xhr.onload = function (){
+			// ajax请求回来后触发这个事件	
+		}
+
+		xhr.send();
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

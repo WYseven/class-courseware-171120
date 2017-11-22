@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+
+			// 异步的  不会立马得到结果，而是在未来的某个时刻得到结果
+			// 同步 立马要得到结果,在进行之后的操作
+
+
+			document.onclick = function (){
+				alert(1)	
+			}
+
+			setTimeout(function (){
+				console.log('我是定时器');	
+			},10000000)
+
+			console.log('我先执行了');
+
+			function fn1(){
+				for( var i = 0; i < 10000; i++ ){
+					console.log(1);
+				}
+			}
+
+			function fn2(){
+				console.log('轮到我了');
+			}
+
+			fn1();
+			fn2();
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>
