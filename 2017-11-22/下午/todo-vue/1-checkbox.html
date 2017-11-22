@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="checkbox" v-model="abc" />
+			<input type="text" v-model="abc" />
+			{{abc}}
+		</div>
+		<script>
+			/*
+				v-model
+					把数据渲染在标签上
+					监控交互的时候数据的改变
+			*/
+			new Vue({
+				el: '#app',
+				data: {
+					abc: false
+				}
+			})
+		</script>
+	</body>
+</html>

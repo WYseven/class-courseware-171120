@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src='../src/vue.js'></script>
+</head>
+
+<body>
+	<section class="todoapp" id="app">
+        <div>
+        	<header class="header" >
+        	    <h1>todos</h1>
+        	    <input class="new-todo" placeholder="请输入内容" />
+        	</header>
+        	<section class="main">
+        	    <input class="toggle-all" type="checkbox" />
+        	    <ul class="todo-list">
+        	    	<li 
+        	    		v-for="item,i in list"
+        	    		:class="{completed: item.checked}"
+        	    	>
+        	    	    <div class="view">
+        	    	        <input class="toggle" type="checkbox" v-model="item.checked" />
+        	    	        <label>{{item.title}}</label>
+        	    	        <button class="destroy"></button>
+        	    	    </div>
+        	    	    <input class="edit" />
+        	    	</li>
+        	    </ul>
+        	</section>
+        </div>
+    </section>
+</body>
+<script>
+
+	// 设计数据结构
+
+	let data = [
+		/*{
+			id: Date.now() + Math.random(),
+			title: '这是假数据1',
+			checked: false
+		},
+		{
+			id: Date.now() + Math.random(),
+			title: '这是假数据2',
+			checked: true
+		}*/
+	]
+
+	new Vue({
+		el: '#app',
+		data:{
+			list: data
+		}
+	})
+
+</script>
+
+</html>

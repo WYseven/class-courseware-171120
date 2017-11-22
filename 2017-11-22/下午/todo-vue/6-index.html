@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src='../src/vue.js'></script>
+</head>
+
+<body>
+	<section class="todoapp" id="app">
+        <div>
+        	<header class="header" >
+        	    <h1>todos</h1>
+        	    <input 
+        	    	v-model="message"
+        	    	class="new-todo" 
+        	    	placeholder="请输入内容" 
+        	    	@keydown.13="addTodo"
+        	    />
+        	</header>
+        	<section class="main">
+        	    <input 
+        	    	class="toggle-all" 
+        	    	type="checkbox" 
+        	    	v-model="isCheckedAll" 
+        	    />
+        	    <ul class="todo-list">
+        	    	<li 
+        	    		v-for="item,i in list"
+        	    		:class="{completed: item.checked,editing: editId === item.id}"
+        	    	>
+        	    	    <div class="view">
+        	    	        <input class="toggle" type="checkbox" v-model="item.checked" />
+        	    	        <label @dblclick="editTodo(item)">{{item.title}}</label>
+        	    	        <button 
+        	    	        	class="destroy" 
+        	    	        	@click="removeTodo(item.id)">
+        	    	        </button>
+        	    	    </div>
+        	    	    <!-- 
+        	    	    	@keydown.esc -->
+        	    	    <input
+        	    	    	class="edit" 
+        	    	    	v-model="item.title" 
+        	    	    	@blur="editDone(item)"
+        	    	    	@keydown.13="editDone(item)"
+        	    	    	@keydown.esc="editCancel(item)"
+        	    	    />
+        	    	</li>
+        	    </ul>
+        	</section>
+        </div>
+    </section>
+</body>
+<script>
+
+	// 设计数据结构
+
+	let data = [
+		{
+			id: Date.now() + Math.random(),
+			title: '这是假数据1',
+			checked: true
+		},
+		{
+			id: Date.now() + Math.random(),
+			title: '这是假数据2',
+			checked: true
+		}
+	]
+
+	// 只要相对数据做第二次加工 计算、添加属过滤属性
+
+	new Vue({
+		el: '#app',
+		data:{
+			list: data,
+			message: '',
+			editId: '',  // 用来记录正要编辑的id
+			beforeTitle: ''
+		},
+		computed: {
+			isCheckedAll: {
+				get() {
+					console.log('我取值了');
+					let checkeds = this.list.filter((item) => {
+						return item.checked
+					})
+
+					return checkeds.length === this.list.length;
+				},
+				set (newValue) {
+					this.list.forEach((item) => {
+						item.checked = newValue
+					})
+				}
+			}
+		},
+		methods: {
+			addTodo(){
+				this.list.push({
+					id: Date.now() + Math.random(),
+					title: this.message,
+					checked: false
+				})
+				this.message = '';
+			},
+			removeTodo (id) {
+				this.list = this.list.filter((item) => {
+					return item.id !== id
+				})
+			},
+			editTodo (item) {
+				this.editId = item.id;
+
+				// 保存编辑的时候的title
+				this.beforeTitle = item.title;
+
+			},
+			editDone (item) {
+				// 编辑完成标题呈现，输入框隐藏
+				this.editId = '';
+				// 如果编辑的数据为空，删除这一项
+				if(item.title.trim() === ''){
+					this.removeTodo(item.id)
+				}
+			},
+			editCancel(item){
+				// 取消编辑
+				this.editId = '';
+				// 把编辑的title还原为之前的title
+				item.title = this.beforeTitle;
+				this.beforeTitle = '';
+			}
+		}
+	})
+
+</script>
+
+</html>

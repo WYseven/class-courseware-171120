@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src='../src/vue.js'></script>
+</head>
+
+<body>
+	<section class="todoapp" id="app">
+        <div>
+        	<header class="header" >
+        	    <h1>todos</h1>
+        	    <input 
+        	    	v-model="message"
+        	    	class="new-todo" 
+        	    	placeholder="请输入内容" 
+        	    	@keydown.13="addTodo"
+        	    />
+        	</header>
+        	<section class="main" v-show="list.length">
+        	    <input 
+        	    	class="toggle-all" 
+        	    	type="checkbox" 
+        	    	v-model="isCheckedAll" 
+        	    />
+        	    <ul class="todo-list">
+        	    	<li 
+        	    		v-for="item,i in filterList"
+        	    		:class="{completed: item.checked,editing: editId === item.id}"
+        	    	>
+        	    	    <div class="view">
+        	    	        <input class="toggle" type="checkbox" v-model="item.checked" />
+        	    	        <label @dblclick="editTodo(item)">{{item.title}}</label>
+        	    	        <button 
+        	    	        	class="destroy" 
+        	    	        	@click="removeTodo(item.id)">
+        	    	        </button>
+        	    	    </div>
+        	    	    <!-- 
+        	    	    	@keydown.esc -->
+        	    	    <input
+        	    	    	class="edit" 
+        	    	    	v-model="item.title" 
+        	    	    	@blur="editDone(item)"
+        	    	    	@keydown.13="editDone(item)"
+        	    	    	@keydown.esc="editCancel(item)"
+        	    	    />
+        	    	</li>
+        	    </ul>
+        	</section>
+            <footer class="footer"  v-show="list.length">
+	            <span class="todo-count">
+	            	<strong>{{unCheckedLength}}</strong>
+	            	<span>条未选中</span>
+	            </span>
+	            <ul class="filters">
+	            	<li><a href="#/all" :class="{selected: hash === 'all'}">全部</a></li> 
+	            	<li><a href="#/active" :class="{selected: hash === 'active'}">未选中</a></li> 
+	            	<li><a href="#/completed" :class="{selected: hash === 'completed'}">选中</a></li>
+	           	</ul>
+            </footer>
+        </div>
+    </section>
+</body>
+<script>
+
+	// 设计数据结构
+
+	let data = JSON.parse(localStorage.getItem('miaov')) || [];
+
+	/*
+		[
+			{
+				id,
+				checked
+			}
+		]
+		深度监控
+	*/
+
+	function setItem(key,value){
+		localStorage.setItem('miaov',JSON.stringify(value))
+	}
+
+	// 只要相对数据做第二次加工 计算、添加属过滤属性
+
+	let vm = new Vue({
+		el: '#app',
+		watch: {
+			// 对data中的属性监控，一旦发生变化，就触发
+			/*"message":function (){
+				console.log('我发生了变化');	
+			},*/
+			/*list:function (){
+				console.log('list发生了变化');
+				localStorage.setItem('miaov',JSON.stringify(this.list))
+			}*//*
+			list: {
+				deep: true,
+				handler: function (){
+					console.log('list发生了变化');
+					localStorage.setItem('miaov',JSON.stringify(this.list))
+				}
+			}*/
+		},
+		data:{
+			list: data,
+			message: '',
+			editId: '',  // 用来记录正要编辑的id
+			beforeTitle: '',
+			hash: 'all'
+		},
+		computed: {
+			isCheckedAll: {
+				get() {
+					console.log('我取值了');
+					let checkeds = this.list.filter((item) => {
+						return item.checked
+					})
+
+					return checkeds.length === this.list.length;
+				},
+				set (newValue) {
+					this.list.forEach((item) => {
+						item.checked = newValue
+					})
+				}
+			},
+			unCheckedLength(){
+				console.log('我重新来过');
+				return this.list.filter((item) => {
+					return !item.checked
+				}).length;
+			},
+			filterList () {
+				// 过滤数据
+				// all active completed
+				switch(this.hash){
+					case 'all':
+						return this.list;
+					break;
+					case 'active':
+						return this.list.filter(item => !item.checked);
+					break;
+					case 'completed':
+						return this.list.filter(item => item.checked);
+					break;
+				}
+			}
+		},
+		methods: {
+			addTodo(){
+				this.list.push({
+					id: Date.now() + Math.random(),
+					title: this.message,
+					checked: false
+				})
+				this.message = '';
+			},
+			removeTodo (id) {
+				this.list = this.list.filter((item) => {
+					return item.id !== id
+				})
+			},
+			editTodo (item) {
+				this.editId = item.id;
+
+				// 保存编辑的时候的title
+				this.beforeTitle = item.title;
+
+			},
+			editDone (item) {
+				// 编辑完成标题呈现，输入框隐藏
+				this.editId = '';
+				// 如果编辑的数据为空，删除这一项
+				if(item.title.trim() === ''){
+					this.removeTodo(item.id)
+				}
+			},
+			editCancel(item){
+				// 取消编辑
+				this.editId = '';
+				// 把编辑的title还原为之前的title
+				item.title = this.beforeTitle;
+				this.beforeTitle = '';
+			}
+		}
+	})
+
+
+	window.onhashchange = function (){
+		let hash = window.location.hash.slice(2);	
+		vm.hash = hash;
+	}
+
+</script>
+
+</html>
