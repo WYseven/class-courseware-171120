@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" />
+            </header>
+            <section class="main">
+                <input class="toggle-all" type="checkbox" />
+                <ul class="todo-list">
+                    <li class="completed editing">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" />
+                            <label>miaoweiketang</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" />
+                    </li>
+                    <li class="">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" />
+                            <label>miaoweiketang</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" />
+                    </li>
+                    <li class="completed">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" />
+                            <label>miaoweiketang</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" />
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+	            <span class="todo-count">
+	            	<strong>0</strong>
+	            	<span>条未选中</span>
+	            </span>
+	            <ul class="filters">
+	            	<li><a href="#/all" class="selected">All</a></li> 
+	            	<li><a href="#/active" class="">Active</a></li> 
+	            	<li><a href="#/completed" class="">Completed</a></li>
+	           	</ul>
+            </footer>
+        </div>
+    </section>
+</body>
+<script>
+	/*
+		1. 增删改查数据，要使用localStorage做数据持久化
+		2. 根据hash不同，过滤渲染的数据
+			a. 全部任务
+			b. 完成的任务
+			c. 未完成的任务
+		3. 自己设计数据结构
+			
+	*/
+</script>
+
+</html>
