@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<news-list :title = 'newsTilte' :list ="newsList"></news-list>
+			<news-list :title="newsTilte2" :list ="newsList2"></news-list>
+			<input type="" name="">
+		</div>
+		<script>
+			/*
+				定制组件的数据
+
+				props = properties
+			*/
+			Vue.component('newsList', {
+				props:['title','list'],  //显式的写出要接收的key的名字
+				template: `<div>
+								<h2>{{title}}</h2>
+								<ul>
+									<li v-for="item in list">{{item}}</li>
+								</ul>
+							</div>`
+			})
+
+			let newsTilte = '新闻';
+			let newsList = ['1',2,3,4,5,6]
+
+			let newsTilte2 = '娱乐';
+			let newsList2 = ['1',2,3,4,5,6]
+			// 根实例
+			new Vue({
+				el: '#app',
+				data:{
+					newsTilte,
+					newsList,
+					newsTilte2,
+					newsList2
+				}
+			})
+		</script>
+	</body>
+</html>

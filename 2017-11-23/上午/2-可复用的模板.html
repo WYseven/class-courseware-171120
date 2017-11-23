@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.ok {
+				background: yellow;
+			}
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<thumbs></thumbs>
+		</div>
+		<div id="miaov"></div>
+		<div id="ketang"></div>
+		<select value="hello">
+			<option>hello</option>
+			<option>hello</option>
+			<option>hello</option>
+		</select>
+		<script>
+
+			// 把这个点赞的功能封装起来
+
+			/*
+				可定制一些功能，比如文字呈现，不叫点赞，确定取消
+				可以定制数据了
+
+				定制结构
+			*/
+
+			function thumbs(option1='点赞',option2='取消点赞',html='',callback=function(){}){
+				// 把结构封装进来
+				let div = document.createElement('div');
+				let button = document.createElement('button');
+
+				button.innerHTML = option1;
+
+				div.appendChild(button);
+
+				// 允许外面定制结构
+
+				div.innerHTML += html;
+				let b = div.getElementsByTagName('button')[0];
+				b.onclick = function (){
+					callback();
+					if(this.isOk){
+						this.innerHTML = option1
+						this.isOk = false;
+
+					}else{
+						this.innerHTML = option2
+						this.isOk = true;
+					}
+				}
+
+				return div;	
+			}
+
+			let box = document.getElementById('box')
+			let miaov = document.getElementById('miaov')
+
+			box.appendChild(thumbs('确定','取消','<span>X</span>',function (){
+					console.log(123);
+			}))
+
+
+			miaov.appendChild(thumbs('确定','取消','<span>X</span>',function (){
+					console.log(456);
+			}));
+			miaov.appendChild(thumbs('确定','取消','<span>√</span>'));
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h2>新闻</h2>
+			<ul>
+				<li>天气很好</li>
+				<li>雾霾很少</li>
+				<li>可以畅呼吸</li>
+			</ul>
+			<custom></custom>
+		</div>
+		<script>
+			// 把html重复的部分封装成组件
+
+			/*
+				在较高层面上，组件是自定义元素，Vue.js 的编译器为它添加特殊功能
+			*/
+			/*	
+				注册组件
+					语法：
+						Vue.component(组件名字,组件的选项)
+			*/
+
+			let a = Vue.component('custom', {
+				template: `<div>hello</div>`
+			})
+
+			new Vue({
+				el: '#app'
+			})
+		</script>
+	</body>
+</html>

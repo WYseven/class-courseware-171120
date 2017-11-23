@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<news-list></news-list>
+			<news-list></news-list>
+			
+		</div>
+		<script>
+
+
+			Vue.component('custom-hello-miaov', {
+				template: `<div>hello</div>`
+			})
+			Vue.component('newsList', {
+				template: `<div>
+								<h2>新闻</h2>
+								<ul>
+									<li>天气很好</li>
+									<li>雾霾很少</li>
+									<li>可以畅呼吸</li>
+								</ul>
+								<custom-hello-miaov></custom-hello-miaov>
+							</div>`
+			})
+
+			new Vue({
+				el: '#app'
+			})
+		</script>
+	</body>
+</html>

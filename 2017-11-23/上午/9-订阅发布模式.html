@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				订阅  函数
+				发布  document
+			*/
+
+			// 是实体的网站
+			// 订阅的方法
+			// 记录订阅的邮箱的本子
+			// 给这些邮箱发信息
+
+			class Miaov {
+				constructor(){
+					this.benzi = {};
+					/*
+						{
+						记录的周刊名:[订阅者,dingyuezhe ]
+						}
+					*/
+				}
+
+				dingyue(name,fn){
+					let mthods = this.benzi[name];
+					if(!mthods){
+						this.benzi[name] = [];
+					}
+
+					this.benzi[name].push(fn)
+				}
+				fabu(name){
+					this.benzi[name].forEach(function (item){
+						item();	
+					})
+				}
+			}
+
+			let m = new Miaov();
+
+			
+
+			// A同学订阅
+
+			m.dingyue('qianduan',function (){
+				console.log('我要订阅你的周刊+qianduan');	
+			})
+
+			m.dingyue('houduan',function (){
+				console.log('我要订阅你的周刊+houduan');	
+			})
+
+			m.dingyue('ios',function (){
+				console.log('我要订阅你的周刊+ios');	
+			})
+
+			/*setTimeout(function (){
+				m.fabu();	
+			},5000)*/
+
+			document.onclick = function (){
+				m.fabu('houduan');		
+			}
+
+
+			/*document.addEventListener('click',function (){
+				alert(1)	
+			})
+			document.addEventListener('click',function (){
+				alert(1)	
+			})
+			document.addEventListener('click',function (){
+				alert(1)	
+			})
+			document.addEventListener('mouseover',function (){
+				alert(1)	
+			})*/
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

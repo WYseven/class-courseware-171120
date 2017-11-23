@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.ok {
+				background: yellow;
+			}
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<button class="ok">点赞</button>
+		</div>
+		<script>
+			let ok = document.querySelector('.ok');
+			ok.onclick = function (){
+				if(this.isOk){
+					this.innerHTML = '点赞'
+					this.isOk = false;
+				}else{
+					this.innerHTML = '取消点赞'
+					this.isOk = true;
+				}
+			}
+
+			// 把这个点赞的功能封装起来
+
+			function thumbs(){
+				// 把结构封装进来
+				let button = document.createElement('button');
+
+				button.onclick = function (){
+					if(this.isOk){
+						this.innerHTML = '点赞'
+						this.isOk = false;
+					}else{
+						this.innerHTML = '取消点赞'
+						this.isOk = true;
+					}
+				}
+
+				return button;	
+			}
+
+		</script>
+	</body>
+</html>
