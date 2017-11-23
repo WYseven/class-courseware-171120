@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.dialog {
+				width: 300px;
+				height: 300px;
+				border: 1px solid #ccc;
+			}
+			.content {
+				height: 200px;
+			}
+			.dialog h2 {
+				border-bottom: 1px solid #ccc;
+			}
+			.footer {
+				border-top: 1px solid #ccc;
+			}
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<custom-dialog title="登录">
+				<template slot-scope="abc">
+					<div>
+						hello
+						{{abc.title}}
+						{{abc.miaov}}
+					</div>
+				</template>
+			</custom-dialog>
+		</div>
+		<script>
+			/*
+				当定制内容的时候，作用域是父组件的，但是定制的内容需要渲染子组件中的数据，需要用slot标签传到定制的内容上，定制内容使用slot-scope来接受
+			*/
+			
+			Vue.component('custom-dialog', {
+				props: {
+					title:String
+				},
+				data(){
+					return {
+						miaov:'hello'
+					}
+				},
+				template: `
+					<div class="dialog">
+						<slot :miaov="miaov" :title="title">
+							<span>{{title}}</span>
+							{{miaov}}
+						</slot>
+					</div>
+				`
+			})
+			
+			// 根实例
+			new Vue({
+				el: '#app',
+				data: {
+					title:'我是父组件的title'
+				}
+			})
+		</script>
+	</body>
+</html>

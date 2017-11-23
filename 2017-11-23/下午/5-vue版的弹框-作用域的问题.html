@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.dialog {
+				width: 300px;
+				height: 300px;
+				border: 1px solid #ccc;
+			}
+			.content {
+				height: 200px;
+			}
+			.dialog h2 {
+				border-bottom: 1px solid #ccc;
+			}
+			.footer {
+				border-top: 1px solid #ccc;
+			}
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<custom-dialog 
+				title='登录' 
+				ok-value="登录"
+			>
+
+
+				<div>hello</div>
+				<div>hello</div>
+				<div>hello</div>
+				<div>hello</div>
+				<div>hello</div>
+
+				<em slot="h2">{{title}}</em>
+
+				<!-- <span slot="footer">miaov</span>
+				<span slot="footer">ketang</span> -->
+
+				<template slot="footer">
+					<span>miaov</span>
+					<span>ketang</span>
+				</template>
+
+			</custom-dialog>
+
+		</div>
+		<script>
+			/*
+				定义一些 props
+					title 弹框标题     必填项
+					okValue 确定文案
+					cancleValue 取消文案
+
+				父组件 -> 子组件 props
+				子组件 -> 父组件 custom-event
+
+				// 定制结构
+
+				每一个组件都是独立的
+
+				在模板中使用组件，写在一对标签组件中的内容，会被当做组件定制的结构
+
+				在组件中就要把这个内容插入到某个地方，如果组件中没有地方要插入这个内容，组件便签中的内容会被忽略。
+
+				“插槽”
+					除非子组件模板包含至少一个 <slot> 插口，否则父组件的内容将会被丢弃。当子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
+					最初在 <slot> 标签中的任何内容都被视为备用内容
+			*/
+			
+			Vue.component('custom-dialog', {
+				//props: ['title','okValue', 'cancleValue']
+				props: {
+					title: {
+						type: String,
+						required: true
+					},
+					okValue: {
+						type: String,
+						default: '确定'
+					},
+					cancleValue: {
+						type: String,
+						default: '取消'
+					}
+				},
+				template: `
+					<div class="dialog">
+						<h2>
+							<slot name="h2"><span>{{title}}</span></slot>
+						</h2>
+						<div class="content">
+							
+							<slot>这是内容</slot>
+						</div>
+						<div class="footer">
+							<slot name="footer">
+								<button>{{okValue}}</button>
+								<button>{{cancleValue}}</button>
+							</slot>
+						</div>
+					</div>
+				`
+			})
+			
+			// 根实例
+			new Vue({
+				el: '#app',
+				data: {
+					title:'我才是标题'
+				}
+			})
+		</script>
+	</body>
+</html>

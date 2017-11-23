@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>
+				<custom-btn value='控制div显示隐藏' @click-button="divShowHandle"></custom-btn>
+				<div v-show="isShow">被button控制</div>
+			</div>
+			<hr>
+			<div>
+				<custom-btn value="改变div的样式" @click-button="changeStyleHandle" :is-change="false"></custom-btn>
+				<div :style="{color:color}">被改变样式了</div>
+			</div>
+		</div>
+		<script>
+			// 组件中的data必须写成函数？？？咱不解释，先用！！
+			Vue.component('custom-btn',{
+				data () {
+					return {
+						color: 'yellow'
+					}
+				},
+				props:{
+					value: {
+						type: String,
+						default: '按钮'
+					},
+					isChange: {
+						type: Boolean,
+						default: true
+					}
+				},
+				template: `<button :style="{color:color}" @click="clickButtonHandle">{{value}}</button>`,
+				methods: {
+					clickButtonHandle () {
+						if(this.isChange){
+							this.color = 'red';
+						}
+						this.$emit('click-button')
+					}
+				}
+			})
+
+			new Vue({
+				el: '#app',
+				data:{
+					isShow: false,
+					color: 'red'
+				},
+				methods: {
+					divShowHandle () {
+						console.log('点击了');
+						this.isShow = !this.isShow;
+					},
+					changeStyleHandle () {
+						this.color = 'blue';
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

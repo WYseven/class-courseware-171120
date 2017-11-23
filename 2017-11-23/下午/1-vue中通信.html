@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>
+				<custom-btn value='控制div显示隐藏' @click-button="divShowHandle"></custom-btn>
+				<div v-show="isShow">被button控制</div>
+			</div>
+			<hr>
+			<div>
+				<custom-btn value="改变div的样式" @click-button="changeStyleHandle"></custom-btn>
+				<div :style="{color:color}">被改变样式了</div>
+			</div>
+		</div>
+		<script>
+
+			Vue.component('custom-btn',{
+				props:{
+					value: {
+						type: String,
+						default: '按钮'
+					}
+				},
+				template: `<button @click="clickButtonHandle">{{value}}</button>`,
+				methods: {
+					clickButtonHandle () {
+
+						this.$emit('click-button')
+					}
+				}
+			})
+
+			new Vue({
+				el: '#app',
+				data:{
+					isShow: false,
+					color: 'red'
+				},
+				methods: {
+					divShowHandle () {
+						console.log('点击了');
+						this.isShow = !this.isShow;
+					},
+					changeStyleHandle () {
+						this.color = 'blue';
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
