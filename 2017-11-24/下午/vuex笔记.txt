@@ -1,0 +1,28 @@
+安装vuex
+npm i vuex --save
+
+使用：
+	import Vuex from 'vuex'
+	Vue.use(Vuex)
+
+	let store = new Vuex.Store({
+		state: {
+			// 定义状态
+			n：0
+		},
+		mutations :{
+			自定义事件名(state,要变的数){
+				state.n = 要变的数
+			}
+		}
+	})
+
+	new Vue({
+		...
+		store
+	})
+
+组件中取值 this.$store.state取值
+
+改变state中的值
+	this.$store.commit('自定义事件名', 数字)

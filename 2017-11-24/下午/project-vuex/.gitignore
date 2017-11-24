@@ -5,9 +5,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/2017-11-24/上午/project/node_modules
-/2017-11-24/下午/project-vuex/node_modules
-
 # Editor directories and files
 .idea
 .vscode

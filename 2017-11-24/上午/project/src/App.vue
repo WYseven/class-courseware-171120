@@ -2,7 +2,7 @@
   <div id="app">
      <section class="todoapp">
        <header-input @add="addTodoHandle"></header-input>
-       <content-list :list="list"></content-list>
+       <content-list :list="list" @change-all-checked="changeAll"></content-list>
        <footer-num></footer-num>
      </section>
   </div>
@@ -45,6 +45,11 @@ export default {
         id: Math.random(),
         title: message,
         checked:false
+      })
+    },
+    changeAll (bl) {
+      this.list.forEach((item) => {
+        item.checked = bl;
       })
     }
   }
