@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<custom-btn  :c='color'></custom-btn>
+			<hr />
+			<custom-btn  :c='color'></custom-btn>
+		</div>
+		<script>
+			/*
+				子组件是不能改props
+				
+				在用引用类型传递props的时候要注意，不能改props
+			*/
+			Vue.component('custom-btn',{
+				props: ['c'],
+				data(){
+					return {
+						colors: this.c.concat()
+					}
+				},
+				template: `<div>
+							<input @click='changeColor' type="button" value="添加" />
+							<span v-for="item in colors">{{item}}</span>
+						</div>`,
+				methods: {
+					changeColor () {
+						this.colors.push('blue');			
+					}
+				}
+			})
+
+			new Vue({
+				el: '#app',
+				data:{
+					color: ['red','yellow']
+				}
+			})
+		</script>
+	</body>
+</html>

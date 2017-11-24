@@ -1,0 +1,32 @@
+开发的时候 在src目录下开发
+mian.js 是整个应用的入口js，启动应用在这里完成
+App.vue 是整个应用的根组件 
+
+以.vue结尾的为单文件组件，文件结构
+	<template></template>  存放模板
+		只能有一个根元素
+	<script></script>      组件的逻辑
+
+		export default {
+			选项参数
+			data
+			methods
+			computed
+		}
+
+	<style></style>			组件的样式
+		sass
+		less
+
+把组件定义在/src/components目录下
+
+一个组件使用另一个组件
+引入组件 import 变量名 from '组件的地址'
+
+注意：组件名不能和html便签名相同
+
+当使用另一个组件的时候，要在当前这个组件中先注册，选项参数中有一个components
+
+components:{
+	组件名:变量
+}
