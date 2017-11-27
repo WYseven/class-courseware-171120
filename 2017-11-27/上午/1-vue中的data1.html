@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.dialog {
+				width: 300px;
+				height: 300px;
+				border: 1px solid #ccc;
+			}
+			.content {
+				height: 200px;
+			}
+			.dialog h2 {
+				border-bottom: 1px solid #ccc;
+			}
+			.footer {
+				border-top: 1px solid #ccc;
+			}
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click='parentChangN'>改变n的值</button>
+			<custom-data></custom-data>
+
+		</div>
+		<script>
+
+			
+			Vue.component('custom-data', {
+				data () {
+					return {
+						n : 1
+					}
+				},
+				template: `
+				<div>
+					<button>子组件修改data中的n</button>
+					<p>{{n}}</p>
+				</div>
+				`
+			})
+			
+			// 根实例
+			new Vue({
+				el: '#app',
+				methods: {
+					parentChangN () {
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

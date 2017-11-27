@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.dialog {
+				width: 300px;
+				height: 300px;
+				border: 1px solid #ccc;
+			}
+			.content {
+				height: 200px;
+			}
+			.dialog h2 {
+				border-bottom: 1px solid #ccc;
+			}
+			.footer {
+				border-top: 1px solid #ccc;
+			}
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click='parentChangN'>改变num的值</button>
+			<custom-data :num="num"></custom-data>
+
+		</div>
+		<script>
+
+			
+			Vue.component('custom-data', {
+				props: ['num'],
+				data () {
+					return {
+						n : this.num  // 值只能在本组件内修改
+					}
+				},
+				computed: {
+					m () {
+						// 这个计算属性m的值依赖于num，当外界把num值改变了这个计算属性会重新计算
+						return this.num
+					}
+				},
+				template: `
+				<div>
+					<button>子组件修改data中的n</button>
+					<p>data中的值：{{n}}</p>
+					<p>computed中的值：{{m}}</p>
+				</div>
+				`
+			})
+			
+			// 根实例
+			new Vue({
+				el: '#app',
+				data:{
+					num: 10
+				},
+				methods: {
+					parentChangN () {
+						this.num = 1000;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -7,6 +7,8 @@ yarn-error.log*
 
 /2017-11-24/上午/project/node_modules
 /2017-11-24/下午/project-vuex/node_modules
+/2017-11-27/上午/backend/node_modules
+/2017-11-27/上午/project/node_modules
 
 # Editor directories and files
 .idea

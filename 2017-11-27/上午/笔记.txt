@@ -1,0 +1,25 @@
+要修改vuex中的state，必须commit一个mutation，如果不这样做的话：
+1. vue-tools不能够记录状态的变化
+2. 不能够对赋的值做一个滤过判断
+
+Mutation 必须是同步函数，也就说提交一个Mutation之后，立马要把state的值改了，不能再Mutation中写任何异步的操作，当使用异步操作的时候，因为只要提交一个mutation，就会有一条记录，记录记的时候，state值还没有改变。
+
+所有的异步操作放在actions中，在action中提交Mutation
+
+commit一个Mutation，是this.$store.commit('Mutation名字'，参数)
+
+dispatch一个action 是this.$store.dispatch('action名字'，参数)
+
+
+axios
+------------------------
+
+npm i axios --save 
+
+用法：
+	 Axios.get(url)
+	 .then(function (pramas){
+	 	console.log(pramas)
+
+	 	store.commit();
+	 })
