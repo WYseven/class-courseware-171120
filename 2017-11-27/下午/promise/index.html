@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				GET http://192.168.2.75:3001/user
+				POST http://192.168.2.75:3001/adress
+				GET http://192.168.2.75:3001/shop
+
+				1. 依次发送三个请求
+					先发第一个http://192.168.2.75:3001/user，请求回来之后，发第二个http://192.168.2.75:3001/adress，回来之后发第三个http://192.168.2.75:3001/shop
+			*/
+		</script>
+	</head>
+
+	<body>
+		<button id="send">发请求</button>
+		<script src="./src/jquery-3.2.1.js"></script>
+		<script>
+			// 回调地狱
+			$('#send').on('click',function (){
+				$.ajax({
+					url: 'http://192.168.2.75:3001/user',
+					type: 'get',
+					success(data){
+						console.log(1,data);
+						console.log(2,data);
+						console.log(3,data);
+						console.log(4,data);
+						console.log(5,data);
+						$.ajax({
+							url: 'http://192.168.2.75:3001/adress',
+							type: 'post',
+							success(data){
+								console.log(11,data);
+								console.log(12,data);
+								console.log(13,data);
+								console.log(14,data);
+								$.ajax({
+									url: 'http://192.168.2.75:3001/shop',
+									type: 'get',
+									success(data){
+										console.log(data);
+										
+									},
+									error(err){
+										console.log(err);
+									}
+								})	
+							},
+							error(err){
+								console.log(err);
+							}
+						})	
+					},
+					error(err){
+						console.log(err);
+					}
+				})	
+			})
+		</script>
+	</body>
+</html>

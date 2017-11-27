@@ -27,6 +27,6 @@ app.get('/info',function (req,res){
 	})
 })
 
-app.listen(3000,'192.168.2.75',function (){
+app.listen(3000,function (){
 	console.log('应用启动成功');
 })

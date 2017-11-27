@@ -12,16 +12,15 @@
 
 <script>
 // 组件中要用到vuex中的state中的值
-
+import Hello from './components/HelloWorld'
 export default {
-  computed : {
+  computed: {
     list () {
-      return this.$store.state.list;
+      return this.$store.state.list
     }
   },
   methods: {
     getDataMethod () {
-      // 后端拿数据
       this.$store.dispatch('getDataAction')
     }
   }

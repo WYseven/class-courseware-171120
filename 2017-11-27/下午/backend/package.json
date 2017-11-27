@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "这是提供给测试的API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangyun",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				GET http://192.168.2.75:3001/user
+				POST http://192.168.2.75:3001/adress
+				GET http://192.168.2.75:3001/shop
+
+				1. 依次发送三个请求
+					先发第一个http://192.168.2.75:3001/user，请求回来之后，发第二个http://192.168.2.75:3001/adress，回来之后发第三个http://192.168.2.75:3001/shop
+			*/
+		</script>
+	</head>
+
+	<body>
+		<button id="send">发请求</button>
+		<script src="./src/jquery-3.2.1.js"></script>
+		<script>
+
+			/*
+				promise  承诺
+					Promise 是异步编程的一种解决方案
+
+				语法：
+					new Promise(function (){
+						// 异步操作	
+					})
+				三种状态：
+					pending（进行中）
+					fulfilled（已成功）
+					rejected（已失败）
+
+				promise对象下有一个方法 then
+					语法：
+						promise对象.then(resolvedFn,rejectedFn)
+
+						当promise对象的状态变为resolved，那么执行resolvedFn，如果是rejected，执行rejectedFn
+
+						then执行之后返回的是promise对象
+
+				定时器模拟异步
+			*/
+
+			// 一起发送 并发，等到所有的请求都回来之后做一些事情
+
+			function ajax1(){
+				return new Promise(function (reslove,reject){
+					$.ajax({
+						url: 'http://192.168.2.75:3001/user',
+						/*success(data){
+							reslove(data)
+						}*/
+						success:reslove,
+						error: reject
+					})
+				})	
+			}
+			function ajax2(){
+				return new Promise(function (reslove,reject){
+					$.ajax({
+						url: 'http://192.168.2.75:3001/adress',
+						type:'post',
+						success:reslove,
+						error: reject
+					})
+				})	
+			}
+			function ajax3(){
+				return new Promise(function (reslove,reject){
+					$.ajax({
+						url: 'http://192.168.2.75:3001/shop',
+						success:reslove,
+						error: reject
+					})
+				})	
+			}
+			// 三个请求并发,都成功了才算成功，只要有一个失败就算失败
+			Promise.all([ajax1(),ajax2(),ajax3()])
+			.then(function (arr){
+				console.log(arr);	
+			})
+			.catch(function (err){
+				console.log(err);
+			})
+			// 把简单的值包装成Promise对象，并且状态是成功的
+			Promise.resolve(123).then(function (data){
+				console.log(data)
+			})
+
+		</script>
+	</body>
+</html>
