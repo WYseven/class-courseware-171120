@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			// 面向对象 是一种编程的思想（模式）
+			// 三大特性：封装 继承 多态
+
+			/*
+				类	用来描述一组对象具有相同的特性（属性）和功能（方法）
+				对象 类的具体体现
+			*/	
+
+			// js中是没有类的
+
+			// 模拟类  函数来模拟
+
+			// Object Array  String
+
+			// Car这个类
+
+			function Car(color){
+				this.color = color;
+				this.lunzi = 4;
+			}
+
+			// 把一类对象共享的方法或属性放在原型上
+			// 原型就是一个对象
+			Car.prototype.run  = function (){
+				console.log(this);	
+			}
+
+			let c1 = new Car('red');  //实例化
+			let c2 = new Car('blue');  //实例化
+
+			// 一个对象去找一个属性的时候，首先先从自己身上找，没有找到，会沿着原型链找？
+
+			// 每创建一个对象，都有一个属性叫做__proto__,指向创建这个对象的构造函数的原型
+
+			// 构造函数的原型就形成了原型链
+
+			c1.run()
+			c2.run()
+
+			console.log(c1.__proto__ === Car.prototype);
+
+			console.log(c1.abc);  // undefined
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

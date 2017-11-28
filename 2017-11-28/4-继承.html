@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			function Person(){
+					
+			}
+			Person.prototype.say  =function (){
+				console.log('我会说话');	
+			}
+
+			function Coder(){
+					
+			}
+
+			Coder.prototype = new Person();
+
+			// c => Coder.prototype => Person.prototype => Object.prototype
+
+			let c = new Coder()
+
+			c.say()
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

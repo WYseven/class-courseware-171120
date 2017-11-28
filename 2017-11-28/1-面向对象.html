@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			// 面向对象 是一种编程的思想（模式）
+			// 三大特性：封装 继承 多态
+
+			/*
+				类	用来描述一组对象具有相同的特性（属性）和功能（方法）
+				对象 类的具体体现
+			*/	
+
+			// js中是没有类的
+
+			// 模拟类  函数来模拟
+
+			// Object Array  String
+
+			// Car这个类
+
+			function Car(){
+				this.color = 'red';
+				this.lunzi = 4	
+
+				//return {a:1}
+			}
+			// new 完之后一定是得到对象
+			/*
+				手动自己return
+				不是自己return	
+					1. 内部创建一个对象
+					2. 函数内部的this => 对象
+					3. 执行函数，添加属性
+					4. 自动的return出去
+			*/
+			// c 为实例或对象
+			let c = new Car();  //实例化
+
+			console.log(c);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>
