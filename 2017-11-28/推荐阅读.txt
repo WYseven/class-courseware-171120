@@ -26,3 +26,19 @@ vue-router两个标签
 	<router-link />  生成链接，自动监听点击的事件，帮助渲染对应路径的组件	传入的props,
 			to='路径'
 			tag="标签名" 生成的标签
+			exact 访问嵌套的路径的时候，要排除掉不必要的匹配，只匹配当前机会的导航添加样式
+
+控制当前的激活状态的导航的样式
+	默认提供class为：router-link-active 
+
+
+子路由
+	children:[]
+
+
+
+
+http://localhost:8080/homa=1?a=1&b=2
+
+?a=1&b=2 search值
+a=1&b=2 queryString
