@@ -1,0 +1,28 @@
+https://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484393&idx=1&sn=142b8e37dfc94de07be211607e468030&chksm=9723612ba054e83db6622a891287af119bb63708f1b7a09aed9149d846c9428ad5abbb822294&mpshare=1&scene=1&srcid=1026oUz3521V74ua0uwTcIWa&from=groupmessage&isappinstalled=0#wechat_redirect&utm_source=tuicool&utm_medium=referral
+
+多页应用
+	网站有多个页面，切换页面跳转链接，页面的资源会重新加载
+
+单页应用
+	只有一个页面，好处就是首次把资源加载之后，再切换别的链接的时候并不会重新刷新页面，不会重复的加载资源
+
+	手机端 和后台管理
+
+
+	一个路径或者hash对应一个视图，当访问这个路径或hash的时候，就渲染指定的视图
+
+	有一个库帮我们管理这种路径和视图的映射关系，vue-router
+
+配置步骤：
+
+vue-router的模式
+	默认是hash模式
+		地址栏中带上hash  #/home  #/about
+	切换为history模式
+		地址栏中 /home /about
+
+vue-router两个标签
+	<router-view />  在配置的配置项中，让路径对应的组件渲染在指定的这个标签位置	
+	<router-link />  生成链接，自动监听点击的事件，帮助渲染对应路径的组件	传入的props,
+			to='路径'
+			tag="标签名" 生成的标签

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<ul>
+			<li id="home">
+				home
+			</li>
+			<li id="about">
+				about
+			</li>
+			<li id="miaov">
+				miaov
+			</li>
+		</ul>
+		<hr>
+		<div id="box"></div>
+		<script>
+
+			let hash = window.location.hash;
+			let d = 'home'
+			if(hash){
+				d = hash.slice(1)
+			}
+
+			if(d === 'home'){
+
+			box.innerHTML = '<p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p>'
+			}else if(d === 'about'){
+				box.innerHTML = '<p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p>'
+			}
+
+			home.onclick = function (){
+
+				box.innerHTML = '<p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p><p>我是home页面</p>'	
+
+				window.location.hash = 'home'
+			}
+			about.onclick = function (){
+
+				box.innerHTML = '<p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p><p>我是about页面</p>'
+				window.location.hash = 'about'	
+			}
+
+			function homeHtml(){
+					
+			}
+
+			function aboutHtml(){
+					
+			}
+
+			{
+				'#home':homeHtml,
+			}
+
+		</script>
+	</body>
+</html>

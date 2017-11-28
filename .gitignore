@@ -10,6 +10,7 @@ yarn-error.log*
 /2017-11-27/上午/backend/node_modules
 /2017-11-27/上午/project/node_modules
 /2017-11-27/下午/backend/node_modules
+/2017-11-28/project/node_modules
 
 # Editor directories and files
 .idea
