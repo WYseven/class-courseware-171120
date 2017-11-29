@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+		</div>
+		<script>
+
+			// created 写上ajax请求
+			// mounted 可以获取元素绑定事件
+
+			let vm = new Vue({
+				el: '#app',
+				data:{
+					show:true
+				},
+				mounted(){
+					console.log('父级挂载完成');
+				}
+			})
+
+		</script>
+	</body>
+</html>

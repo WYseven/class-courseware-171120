@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="show=!show">测试</button>
+			<div>
+				<custom-data v-if="show"></custom-data>
+			</div>
+		</div>
+		<script>
+
+			Vue.component('custom-data', {
+				template: `<div>hello</div>`,
+				mounted(){
+					console.log('挂载完成');
+				},
+				beforeDestroy () {
+					console.log('子组件被销毁之前');
+				},
+				destroyed () {
+					console.log('子组件被销毁之后');
+				}
+			})
+
+
+			let vm = new Vue({
+				el: '#app',
+				data:{
+					show:true
+				},
+				mounted(){
+					console.log('父级挂载完成');
+				}
+			})
+
+		</script>
+	</body>
+</html>

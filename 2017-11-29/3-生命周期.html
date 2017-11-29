@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<script>
+
+
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					message:123,
+					list: [1,2,3,4,5]
+				},
+				created () {
+					console.log('created:已经对数据监控完成了');
+					console.log('获取发送ajax，拿数据');
+					console.log(document.getElementById('app').innerHTML);
+				},
+				mounted(){
+					console.log('mounted挂载之后,可以获取页面中元素');
+					console.log(document.getElementById('app').innerHTML);
+
+					window.onresize = function (){
+						console.log('111111111111111');	
+					}
+				},
+				beforeDestroy(){
+					console.log('beforeDestroy实例销毁之前');
+				},
+				destroyed () {
+					console.log('destroyed实例销毁之后');
+					console.log('销毁实例之后，可以把一些绑定的事件给解绑');
+					window.onresize = null;
+				}
+			})
+
+			document.onclick = function (){
+				vm.$destroy(); // 销毁当前实例	
+			}
+
+		</script>
+	</body>
+</html>

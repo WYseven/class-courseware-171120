@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			"use strict"
+			/*let n = 0;
+			try {
+				function fn(){
+					n++
+					fn()
+				}
+				fn()
+			}catch(e){
+				console.log(n);
+				console.log(e);
+			}*/
+
+			/*function fn(n,m=0){
+				if(n === 0) 
+					return n;
+				else 
+					return fn(n-1,m+n)
+			}
+
+			console.log(fn(10378));*/
+			let kk = 0;
+			try {
+				function fn(n,m=0){
+					kk++
+					fn()
+				}
+				fn()
+			}catch(e){
+				console.log(kk);
+				console.log(e);
+			}
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<script>
+
+			// Vue进行编译
+
+
+			let app = document.getElementById('app')
+
+			let d = {
+				message: 'hello'
+			}
+
+			// 在vue内部，会把选项参数中data数据，转换成getter和setter方式，这样的话，在改变数据的时候，会响应，进而重新渲染页面
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					message:123,
+					list: [1,2,3,4,5]
+				},
+				beforeCreate () {
+					console.log('beforeCreate+数据观测之前');
+				},
+				created () {
+					console.log('created:已经对数据监控完成了');
+					console.log('获取发送ajax，拿数据');
+					console.log(document.getElementById('app').innerHTML);
+				},
+				beforeMount(){
+					console.log('beforeMount挂载之前');
+					console.log(document.getElementById('app').innerHTML);
+				},
+				mounted(){
+					console.log('mounted挂载之后,可以获取页面中元素');
+					console.log(document.getElementById('app').innerHTML);
+
+				}
+			})
+			console.log(vm);
+		</script>
+	</body>
+</html>
