@@ -1,25 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-// @就是src目录，详细见/build/webpack.base.conf.js
-
-import HelloWorld from '@/components/HelloWorld'
-import User from '@/components/user'
-
 Vue.use(Router)
 
-export default new Router({
-  mode:'history',
+
+import Home from '@/components/home'
+import Backend from '@/views/backend'
+import workbench from '@/views/backend/work'
+import project from '@/views/backend/project'
+import doc from '@/views/backend/doc'
+
+let router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
-      path: '/user/:abc',  // 动态路径 id随着访问的不同路径不同而不同
-      name: 'User',
-      component: User
+      path: '/backend',
+      name: 'Backend',
+      component: Backend,
+      children: [
+        {
+          path: 'workbench',
+          name: 'workbench',
+          component: workbench
+        },
+        {
+          path: 'project',
+          name: 'project',
+          component: project
+        },
+        {
+          path: 'doc',
+          name: 'doc',
+          component: doc
+        }
+      ]
     }
   ]
 })
+
+export default router
