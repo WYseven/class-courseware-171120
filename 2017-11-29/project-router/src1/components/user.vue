@@ -43,11 +43,15 @@
         users: data
       }
     },
-    watch: {
+   /* watch: {
       // 写上要监控的当前这个实例身上的属性
       '$route':function (){  // 当属性的值发生变化，就会执行后面的函数
         console.log(this.$route.params.abc)
       }
+    },*/
+    beforeRouteUpdate (to,from,next) {
+      console.log(this.$route.params.abc)
+      next()
     },
     mounted () {
       console.log(this.$route.params.abc)

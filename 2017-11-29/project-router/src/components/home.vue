@@ -25,6 +25,26 @@
       return {
         isLogin: false
       }
+    },
+    beforeRouteEnter (to,from,next) {
+      console.log('组件内的钩子：beforeRouteEnter')
+      console.log(this)
+      /* 
+        // 不！能！获取组件实例 `this`
+      // 因为当守卫执行前，组件实例还没被创建
+      */
+      next(function(vm){  // 通过next的回调函数拿到当前组件的实例
+        console.log(vm)
+      });
+    },
+    beforeRouteLeave (to,from,next) {
+      console.log('我要离开这个组件了')
+      if(true){
+        next()
+      }
+    },
+    beforeCreate(){
+      console.log('beforeCreate')
     }
   }
 </script>
