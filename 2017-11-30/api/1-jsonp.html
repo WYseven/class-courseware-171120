@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				html标签中，天生支持跨域的是
+					link
+					script
+					a
+					img
+			*/
+			// jsonp  json + padding
+
+			function fn(data){
+				console.log(data);
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<img src="https://resource.smartisan.com/resource/9016fefd6b03dab8c7fc0ac70734f277.jpg?x-oss-process=image/resize,w_880/quality,Q_90/format,webp">
+		<!-- <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+			console.log($);
+		</script> -->
+		<!-- <script src="https://api.douban.com/v2/movie/in_theaters?callback=fn"></script> -->
+		<script>
+			/*
+				当使用script请求这个地址的时候，拿到数据，会给js的解析器解析为js语句
+				在请求回来的数据中有一个函数的执行 
+					fn({a:1})
+
+				后端要给到这个中jsonp格式的
+					fn()
+			*/
+
+			function jsonp(){
+				let script = document.createElement('script')
+
+				script.src = 'https://api.douban.com/v2/movie/in_theaters?callback=fn'
+
+				document.body.appendChild(script)
+			}
+
+			document.onclick = function (){
+				jsonp();	
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+锤子的官网接口：
+https://www.smartisan.com/product/spus?page_size=20&category_id=60&page=1&sort=sort
+
+
+QQ音乐
+
+https://c.y.qq.com/v8/fcg-bin/getmv_by_tag?g_tk=5381&jsonpCallback=MusicJsonCallback38057585013430173&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=GB2312&notice=0&platform=yqq&needNewCode=0&cmd=shoubo&lan=neidi
+
+https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=cn_man_all&pagesize=100&pagenum=1&g_tk=5381&jsonpCallback=GetSingerListCallback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+
+https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=c_cantor_all&pagesize=100&pagenum=1&g_tk=5381&jsonpCallback=GetSingerListCallback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+
+
+豆瓣接口
+	https://api.douban.com/v2/movie/in_theaters	
+	https://api.douban.com/v2/movie/in_theaters?callback=fn
