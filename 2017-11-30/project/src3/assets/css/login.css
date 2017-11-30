@@ -1,0 +1,25 @@
+.login .login-box{
+    width: 400px;
+    margin: 50px auto;
+  }
+  .login-box h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .login input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 1px 3px #666;
+    padding: 0 10px;
+  }
+  .login .login-btn input {
+    background: #4db3ff;
+  }
+  .back-index {
+    padding: 20px 0px;
+    line-height: 20px;
+    text-align: center;
+  }

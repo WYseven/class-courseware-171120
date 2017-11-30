@@ -29,22 +29,9 @@
        // localStorage.setItem('isLogin', JSON.stringify({login:true}))
         localStorage.setItem('isLogin', '{"login":true}')
 
-        // 取出来query中的字段？
-
-      let r = this.$route.query.r;
-       if(r){
-         this.$router.replace({
-          path: '/backend/'+r
-        })
-       }else{
-         this.$router.replace({
+        this.$router.replace({
           path: '/'
         })
-       }
-
-        /* this.$router.replace({
-          path: '/'
-        }) */
 
       }
     }

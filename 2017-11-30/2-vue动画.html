@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.miaov {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			
+			.v-enter {
+				opacity: 0;
+			}
+			.v-enter-to {
+				opacity: 1;
+			}
+			.v-enter-active {
+				transition: opacity 1s;
+			}
+
+			.v-leave {
+				opacity: 1
+			}
+			.v-leave-to {
+				opacity: 0.1
+			}
+			.v-leave-active {
+				transition: opacity 5s;
+			}
+
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="show = !show">切换</button>
+			<transition>
+				<div v-show="show" class="miaov">
+					切换我进行动画
+				</div>
+			</transition>
+			
+
+		</div>
+		<script>
+
+			
+
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					show: true
+				}
+
+			})
+			console.log(vm);
+		</script>
+	</body>
+</html>

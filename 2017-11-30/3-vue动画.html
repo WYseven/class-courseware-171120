@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.miaov {
+				width: 100px;
+				height: 100px;
+				background: red;
+				transform: translate(500px);
+			}
+			
+			.v-enter {
+				transform: translate(0px);
+			}
+			.v-enter-to {
+				transform: translate(500px);
+			}
+			.v-enter-active {
+				transition: 1s;
+			}
+
+			.v-leave {
+				transform: translate(500px);
+			}
+			.v-leave-to {
+				transform: translate(0px);
+			}
+			.v-leave-active {
+				transition: 1s;
+			}
+
+			.fade-enter {
+				opacity: 0
+			}
+			.fade-enter-to {
+				opacity: 1
+			}
+			.fade-enter-active,.fade-leave-active {
+				transition: 1s;
+			}
+			.fade-leave {
+				opacity: 1
+			}
+			.fade-leave-to {
+				opacity: 1
+			}
+
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="show = !show">切换</button>
+			<transition>
+				<div v-show="show" class="miaov">
+					切换我进行动画
+				</div>
+			</transition>
+
+			<transition name="fade">
+				<div v-show="show" class="miaov">
+					切换我进行动画
+				</div>
+			</transition>
+			
+
+		</div>
+		<script>
+
+			
+			// 默认的class类是v-开头
+
+			// 改class类的开头
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					show: false
+				}
+
+			})
+			console.log(vm);
+		</script>
+	</body>
+</html>

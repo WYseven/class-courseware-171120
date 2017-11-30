@@ -1,0 +1,44 @@
+.header-nav {
+  float: left;
+}
+
+.user-info-box {
+  float: right;
+  position: relative;
+}
+
+.user-info-box img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.header-menu {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    border: 1px solid #d1dbe5;
+    padding: 5px 0;
+    background-color: #fff;
+    z-index: 100;
+    text-align: center;
+    min-width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    opacity: 0;
+    height: 0;
+    transition: .5s;
+    overflow: hidden;
+}
+
+.user-info-box:hover .header-menu {
+  opacity: 1;
+  height: 60px;
+}
+
+.header-menu li {
+  height: 50px;
+  color: #000;
+}

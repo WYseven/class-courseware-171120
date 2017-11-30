@@ -1,0 +1,11 @@
+.create-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  padding: 32px 32px 10px;
+  margin-left: -250px;
+  margin-top: -296px;
+  background: #fff;
+  border-radius: 5px;
+}

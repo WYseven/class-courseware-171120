@@ -3,8 +3,8 @@
     <div class="home-header">
       <img src="../assets/miaov.png" alt="">
       <div class="portrait" :class={portraitLogin:isLogin}>
-        <router-link v-if="!isLogin" to="/login" tag="span">登录</router-link>
-        <img v-if="isLogin"  src="../assets/portrait.png" alt="">
+        <router-link to="/login" tag="span">登录</router-link>
+        <img  src="../assets/portrait.png" alt="">
       </div>
 
     </div>
@@ -21,12 +21,9 @@
 <script>
   export default {
     name: 'home',
-    
-    computed: {
-      isLogin () {
-        let o = JSON.parse(localStorage.getItem('isLogin')) || {}
-        
-        return !!o.login;
+    data () {
+      return {
+        isLogin: false
       }
     },
     beforeRouteEnter (to,from,next) {

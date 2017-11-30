@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				some
+			*/
+			let arr = [1,2,3,5];
+
+			// 是否全都是数组，全都数字，返回true，否则false
+
+			let bl1 = arr.every(function (item){
+				return typeof item === 'number'	
+			})
+
+			console.log(bl1);
+
+			// 数组只要有一项是数子，返回true，否则false
+
+			let bl2 = arr.some(function (item){
+				return typeof item === 'number'	
+			})
+
+			console.log(bl2);
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

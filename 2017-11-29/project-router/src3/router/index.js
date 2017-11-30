@@ -83,13 +83,7 @@ router.beforeEach((to, from, next) => {
     if (o.login) {
       next()
     }else{
-      
-      next({
-        path: '/login',
-        query: {
-          r: to.name
-        }
-      })
+      next('/login')
     }
   }else{
     next();

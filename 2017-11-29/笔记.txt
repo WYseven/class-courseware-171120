@@ -55,4 +55,8 @@ key值
 			}
 
 
-鉴权
+鉴权  
+	放在beforeEach中做，配合meta字段
+
+页面之间传递数据
+	queryString的方式 ?

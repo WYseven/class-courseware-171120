@@ -27,33 +27,21 @@ let router = new Router({
       path: '/backend',
       name: 'Backend',
       component: Backend,
-      /* meta:{
-        login: true
-      }, */
       children: [
         {
           path: 'workbench',
           name: 'workbench',
-          component: workbench,
-          meta: {
-            login: true
-          }
+          component: workbench
         },
         {
           path: 'project',
           name: 'project',
-          component: project,
-          meta: {
-            login: true
-          }
+          component: project
         },
         {
           path: 'doc',
           name: 'doc',
-          component: doc,
-          meta: {
-            login: false
-          }
+          component: doc
         }
       ]
     },
@@ -64,39 +52,12 @@ let router = new Router({
   ]
 })
 
-
+// 类似中间件，等这里处理完事之后，把主动权再交到下一个
 router.beforeEach((to, from, next) => {
-  /* 
-    to.matched
-      保存的是访问这个路径的所有的嵌套父级的路由信息对象
-  */
-  // 所有访问的组件都会执行这个钩子函数
-  // 那些组件是需要登陆，那些不需要呢？
-
-  // 访问的路径，是否需要登陆？
-  
-  if (to.matched.some(item => item.meta.login)){
-    // 是否登录了
-
-    let o = JSON.parse(localStorage.getItem('isLogin')) || {}
-
-    if (o.login) {
-      next()
-    }else{
-      
-      next({
-        path: '/login',
-        query: {
-          r: to.name
-        }
-      })
-    }
-  }else{
-    next();
-  }
-
-
- 
+  console.log(to)  //  到哪里去
+  console.log(from) // 从哪里来
+  console.log('走这里了beforeEach')
+  next();  // 如果想要继续往下走，必须调用next
 })
 
 /* router.beforeResolve(() => {
