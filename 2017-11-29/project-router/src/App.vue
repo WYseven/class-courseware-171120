@@ -21,7 +21,7 @@ export default {
     opacity: 1
   }
   .fade-enter-active,.fade-leave-active {
-    transition: 1s;
+    transition: .3s;
   }
   .fade-leave {
     opacity: 1

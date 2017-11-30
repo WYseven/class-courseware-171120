@@ -3,16 +3,35 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 
-import Home from '@/components/home'
-import Backend from '@/views/backend'
+// import Home from '@/components/home'
+/* import Backend from '@/views/backend'
 import workbench from '@/views/backend/work'
-import project from '@/views/backend/project'
-import doc from '@/views/backend/doc'
+import project from '@/views/backend/project' */
+// import doc from '@/views/backend/doc'
+
+let Home = () => {
+  return import('@/components/home')
+}
+let doc = () => {
+  return import('@/views/backend/doc')
+}
+let Backend = () => {
+  return import('@/views/backend/')
+}
+let workbench = () => {
+
+  return import('@/views/backend/work')
+}
+let project = () => {
+  
+  return import('@/views/backend/project')
+}
 
 import Login from '@/components/login'
 
 let router = new Router({
   mode: 'history',
+  base:'/mock',
   routes: [
     {
       path: '/',
