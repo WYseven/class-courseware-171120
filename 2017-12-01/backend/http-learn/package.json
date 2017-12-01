@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.1",
+  "description": "这是我的博客",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "vue": "^2.5.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
