@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			let data = {
+				title: '人物',
+				list: [
+					{
+						name:'leo',
+						age:30
+					},
+					{
+						name:'momo',
+						age:30
+					}
+				]
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<!-- <h2>标题</h2>
+			<ul id="list">
+				<li>
+					<p>姓名：XXXX</p>
+					<p>性别：XXXX</p>
+				</li>
+				<li>123</li>
+				<li>123</li>
+			</ul> -->
+		</div>
+		<script>
+			let h2 = `<h2>${data.title}</h2>`
+			let listHtml = '<ul>'
+				listHtml += data.list.map(function (item){
+				return `
+					<li>
+						<p>姓名：${item.name}</p>
+						<p>年龄：${item.age}</p>
+					</li>
+				`
+			}).join('')
+
+			listHtml += '</ul>'
+
+			let h = h2 + listHtml;
+
+			console.log(h);
+
+			box.innerHTML = h;
+
+		</script>
+	</body>
+</html>

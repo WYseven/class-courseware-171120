@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./template-web.js"></script>
+		<script>
+			let data = {
+				title: '人物',
+				list: [
+					{
+						name:'leo',
+						age:30
+					},
+					{
+						name:'momo',
+						age:30
+					}
+				]
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box"></div>
+		<script id="news" type="text/html">
+			<h2><%= title%></h2>
+			<ul id="list">
+				
+				<%for(var i = 0; i < list.length; i++){%>
+					<li>
+						<p>姓名：<%=list[i].name%></p>
+						<p>性别：<%=list[i].age%></p>
+					</li>
+				<%}%>
+			</ul>
+		</script>
+		<script>
+			
+			console.log(template);
+
+			// 模板和数据结合在一起，模板引擎
+
+			let h = template('news',data);
+
+			box.innerHTML = h;
+
+
+
+		</script>
+	</body>
+</html>

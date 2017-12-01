@@ -7,7 +7,7 @@ let app = express();
 
 // 配置模板的路径
 
-app.set('views', __dirname+'/views/')
+app.set('views', __dirname+'/views')
 
 app.get('/',function (req,res){
 	res.sendFile('index.html')	
