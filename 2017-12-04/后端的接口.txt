@@ -1,0 +1,30 @@
+
+请求地址： /shop_list
+
+请求数据： 无
+响应数据：
+	{
+		code: 1失败；0成功
+		data: { 存放数据
+			list： [  商品列表
+				{
+					id: 大类商品的id
+					name  商品名字
+					price 商品单价
+					image_pre 商品图片的服务地址
+					sku_list: [  大类商品下的分类
+						{
+							direct_to_cart： true可直接加入购物车；false到详情页
+							ali_image： 展示的大图
+							sku_id：分类商品的id
+							sub_title： 小标题
+							title：大标题
+							price: 分类商品的单价
+							image： 分类商品的颜色图片（可作为背景，img）
+							color_id： 颜色的id
+						}
+					]
+				}
+			]
+		}
+	}
