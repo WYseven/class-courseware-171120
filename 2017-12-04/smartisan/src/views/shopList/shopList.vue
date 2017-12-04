@@ -11,7 +11,7 @@
 				</div>
 				<div class="gray-box">
 					<div class="item-box">
-            <shop-item v-for="item in list" :shop-item="item"></shop-item>
+            <shop-item :key="item.id" v-for="item in list" :shop-item="item"></shop-item>
 					</div>
 				</div>
 			</div>
