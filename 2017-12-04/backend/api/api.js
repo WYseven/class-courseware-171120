@@ -31,8 +31,12 @@ router.get('/shop_details',function (req,res){
 // 获取商品列表数据
 
 let testUrl = `https://www.smartisan.com/product/spus?page_size=20&category_id=60&page=1&sort=sort`
-
+let shopListData = null;
 router.get('/shop_list',function (req,res){
+  if (shopListData){
+    res.send(shopListData)
+    return;
+  }
   request.get({
     url:testUrl,
     gzip:true,
@@ -45,14 +49,15 @@ router.get('/shop_list',function (req,res){
         })
         }else{
           let b = JSON.parse(body).data.list;
-
-          res.send({
-            code:1,
-            data:{
-              list: filterListData(b)
-            }
-          })
+        let data = {
+          code: 1,
+          data: {
+            list: filterListData(b)
+          }
         }
+        shopListData = data;
+        res.send(data)
+      }
   });
 })
 
