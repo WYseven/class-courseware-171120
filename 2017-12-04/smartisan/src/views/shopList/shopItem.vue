@@ -41,6 +41,7 @@
   </div>
 </template>
 <script>
+import {addCarCount,getAddCarData} from '@/getData/method'
   export default {
     data () {
       return  {
@@ -66,6 +67,15 @@
         // 拿到要添加到购物车的id
         let skuId = this.itemInfo.sku_id
         // 发请求？？？？今天的任务是这个发请求
+      // 已经购买了商品，告诉后端数量了，第二次在发送的时候，
+      // 只需要发送购买的数量，就没必要再获取商品的数据了
+        addCarCount({skuId,count:1})
+        .then(function (params) {
+            getAddCarData({skuId}).then(function(params2) {
+              console.log(params2.data)
+            })
+            console.log(params.data)
+        })
 
       }
     }

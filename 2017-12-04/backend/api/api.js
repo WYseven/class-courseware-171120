@@ -62,7 +62,7 @@ router.get('/shop_list',function (req,res){
 })
 
 // 添加到购物车之后返回商品数据
-router.get('/add_cart', function (req,res) {
+router.get('/add_car', function (req,res) {
   let { skuId = 100036002} = req.query;
   request.get(`https://www.smartisan.com/product/skus?ids=${skuId}`,{
     headers: {
