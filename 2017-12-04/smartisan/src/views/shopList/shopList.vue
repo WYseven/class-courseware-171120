@@ -30,7 +30,6 @@
       ShopItem
     },
     created () {
-      
       getShopListMethod().then( (params) => {
        this.list = params.data.data.list
       })

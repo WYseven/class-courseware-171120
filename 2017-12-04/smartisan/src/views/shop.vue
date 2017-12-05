@@ -68,6 +68,9 @@
 	export default {
 		components: {
 			SmallCar
+		},
+		created () {
+			this.$store.dispatch('getCarShopIds')
 		}
 	}
 </script>

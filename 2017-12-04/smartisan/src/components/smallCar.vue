@@ -29,7 +29,9 @@
                           <span v-for="spec in item.shop_info.spec_json">{{spec.show_name}}</span>
                         </p>
                         <h6>
-                          <span class="price-icon">¥</span><span class="price-num">{{item.price}}</span><span class="item-num">x 1</span>
+                          <span class="price-icon">¥</span>
+                          <span class="price-num">{{item.price}}</span>
+                          <span class="item-num">x {{item.count}}</span>
                         </h6>
                       </div>
                     </div>

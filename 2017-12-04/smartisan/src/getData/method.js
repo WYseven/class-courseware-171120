@@ -11,7 +11,7 @@ let urlMap = {
 export function getShopListMethod() {
   return Axios.get(base + urlMap.shop_list)
 }
-export function addCarCount(obj) {
+export function addCarCount(obj={}) {
   return Axios.get(base + urlMap.count, {
     params: {
       skuId: obj.skuId,

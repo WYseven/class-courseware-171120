@@ -85,7 +85,7 @@ import {addCarCount,getAddCarData} from '@/getData/method'
             // console.log(params.data)
         }) */
 
-        this.$store.dispatch('addCarCountAction', {skuId,count:1})
+        this.$store.dispatch('addCarCountAction', {skuId})
 
       }
     }

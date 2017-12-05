@@ -1,3 +1,8 @@
 npm i axios --save
 
 npm i vuex --save
+
+
+小购物车，一旦刷新页面，就要从后端拿到小购物车的数据
+/count
+
