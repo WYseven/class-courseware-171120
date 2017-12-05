@@ -2,10 +2,13 @@
   <div class="item">
     <div>
       <div class="item-img">
-          <!-- :src="itemInfo.ali_image" -->
+          <!-- 
+            :src="itemInfo.ali_image" 
+            src="../../assets/1.jpg"
+          -->
         <img 
           :alt="itemInfo.title" 
-          src="../../assets/1.jpg"
+          :src="itemInfo.ali_image"
           style="opacity: 1;"
         >
       </div>
@@ -69,13 +72,20 @@ import {addCarCount,getAddCarData} from '@/getData/method'
         // 发请求？？？？今天的任务是这个发请求
       // 已经购买了商品，告诉后端数量了，第二次在发送的时候，
       // 只需要发送购买的数量，就没必要再获取商品的数据了
-        addCarCount({skuId,count:1})
-        .then(function (params) {
-            getAddCarData({skuId}).then(function(params2) {
-              console.log(params2.data)
+        /* addCarCount({skuId,count:1})
+        .then( (params) => {
+            getAddCarData({skuId}).then((params2) => {
+              let shop = params2.data.data.list[0];
+            console.log(shop)
+              this.$store.commit('changeCarShops', {
+                shop
+              })
+
             })
-            console.log(params.data)
-        })
+            // console.log(params.data)
+        }) */
+
+        this.$store.dispatch('addCarCountAction', {skuId,count:1})
 
       }
     }
