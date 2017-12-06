@@ -49,7 +49,9 @@
               </span>
             </h5>
             <h6>
-              <a ng-href="http://www.smartisan.com/shop/#/cart" class="nav-cart-btn" href="http://www.smartisan.com/shop/#/cart">去购物车</a>
+              <router-link class="nav-cart-btn" :to="{name:'Car'}">
+                去购物车
+              </router-link>
             </h6>
           </div>
         </div>
@@ -65,6 +67,7 @@
         return this.$store.state.carShops
       },
       totalCountAndMoney () {
+        // 从getter中取值
         return this.$store.getters.totalCountAndMoney
       }
     },

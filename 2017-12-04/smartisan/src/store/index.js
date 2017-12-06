@@ -14,8 +14,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     carShops: []  // 存放的是加入购物车的数据
-  },  // 对state中的数据进一步处理，需要写在getter中，类似于组件的computed
+  },  
+  // 对state中的数据进一步处理，需要写在getter中，类似于组件的computed
   getters: {
+    // 进一步处理计算总数和总价值
     totalCountAndMoney (state) {
 
       /*state.carShops.reduce(function (total,item) {
@@ -32,7 +34,7 @@ export default new Vuex.Store({
         totalCount: 0,
         totalMoney: 0
       }
-
+      // 计算总数和总价值
       state.carShops.forEach(function(item){
         total.totalCount += parseInt(item.count)
         total.totalMoney += parseInt(item.count) * parseInt(item.price)
