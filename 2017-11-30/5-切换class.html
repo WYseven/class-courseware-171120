@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.red {
+				background: red;
+			}
+		</style>
+		<script src='./src/vue.js'></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="tab" :class="{red: isAddClass}">切换class</button>
+		</div>
+		<script>
+			// 会代理data中的数据，转成getter和setter的形式
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					addClass: true
+				},
+				computed : {
+					isAddClass: {
+						get(){
+							return this.addClass
+						},
+						set(newValue){
+							this.addClass = newValue
+						}
+					}
+				},
+				methods: {
+					tab () {
+						this.isAddClass = !this.isAddClass;
+					}
+				}
+			})
+
+		</script>
+	</body>
+</html>

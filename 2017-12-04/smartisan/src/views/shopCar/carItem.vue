@@ -2,7 +2,14 @@
   <div class="cart-top-items">
     <div class="cart-items">
       <div class="items-choose">
-        <span class="blue-checkbox-new checkbox-on"><a></a></span>
+        <span 
+          class="blue-checkbox-new"
+          :class="{'checkbox-on': checked}"
+           @mousedown.prevent
+           @click="checkedHandle"
+        >
+          
+        </span>
       </div>
       <div class="items-thumb">
         <img :src="shopItem.shop_info.ali_image">
@@ -64,6 +71,15 @@
       },
       isMinus () {
         return this.shopItem.count == 1
+      },
+      // 依赖于外界的checked
+      checked : {
+        get () {
+          return this.shop.checked
+        },
+        set (newValue) {
+          this.shop.checked = newValue;
+        }
       }
     },
     methods: {
@@ -89,6 +105,11 @@
           return;
         }
         this.$store.dispatch('addCarCountAction', {skuId:this.shopItem.id})
+      },
+      // 切换选中不选中
+      checkedHandle () {
+        // 设置值，会触发computed中checked的set函数
+        this.checked  = !this.checked
       }
     }
   }

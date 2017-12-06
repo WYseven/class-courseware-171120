@@ -17,3 +17,7 @@ npm i vuex --save
 
 	请求放在vuex的action中了
 
+一个组件中解析数据的顺序
+
+props => data => computed
+

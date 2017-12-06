@@ -34,7 +34,13 @@
 						<div class="cart-bar-operation">
 							<div>
 								<div class="choose-all js-choose-all">
-									<span class="blue-checkbox-new checkbox-on"><a></a></span>
+									<span 
+                    class="blue-checkbox-new"
+                    :class="{'checkbox-on': isCheckedAll}"
+                    @mousedown.prevent
+                    @click="checkedAllHandle"
+                  >
+                  </span>
 									全选
 								</div>
 								<div class="delete-choose-goods">删除选中的商品</div>
@@ -70,13 +76,54 @@
 <script>
 import CarItem from './carItem'
   export default {
+    data () {
+      return {
+        // isCheckedAll:true
+      }
+    },
     components: {
       CarItem
+    },
+    methods: {
+      checkedAllHandle () {
+
+        // 给计算属性赋值
+        this.isCheckedAll = !this.isCheckedAll
+      }
     },
     computed : {
       // 从vuex中取出carShops
       carShops () {
-        return this.$store.state.carShops
+
+        // 在每一个数据上加一个标示，用来标示这个商品是选中的还是不选中
+        let shops = this.$store.state.carShops
+
+        shops.forEach((item) => {
+          //item.checked = true;
+          // 新添加的属性，要使用这种方式
+          this.$set(item,"checked",true)
+        })
+
+        console.log(this)
+
+        console.log(shops)
+
+        return shops
+      },
+      isCheckedAll : {
+        get () {
+          // 只要有一个没被选中，返回就是false
+          console.log('取isCheckedAll值的')
+          let findItem = this.carShops.find(item => !item.checked)
+          return !findItem
+
+        },
+        set (newValue) {  // 设置的值作为参数传过来
+          this.carShops.forEach((item) => {
+            // 一旦重新赋值，那么模板会重新渲染，就重新取isCheckedAll的值
+            item.checked = newValue
+          })
+        }
       }
     }
   }
