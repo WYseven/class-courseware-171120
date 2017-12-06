@@ -116,7 +116,6 @@ import CarItem from './carItem'
           console.log('取isCheckedAll值的')
           let findItem = this.carShops.find(item => !item.checked)
           return !findItem
-
         },
         set (newValue) {  // 设置的值作为参数传过来
           this.carShops.forEach((item) => {
