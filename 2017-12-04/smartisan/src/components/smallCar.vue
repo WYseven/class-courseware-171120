@@ -35,7 +35,7 @@
                         </h6>
                       </div>
                     </div>
-                    <div class="del-btn">删除</div>
+                    <div class="del-btn" @click="remove(item.id)">删除</div>
                   </div>
                 </div>
               </li>
@@ -54,10 +54,16 @@
   </div>
 </template>
 <script>
+
   export default {
     computed: {
       shops () {
         return this.$store.state.carShops
+      }
+    },
+    methods: {
+      remove (skuId) {
+        this.$store.dispatch('removeCountAction', {skuId})
       }
     }
   }

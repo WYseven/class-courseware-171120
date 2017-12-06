@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 
 import { 
   addCarCount, 
-  getAddCarData 
+  getAddCarData,
+  removeCounBySkuId
 } from '@/getData/method'
 
 Vue.use(Vuex)
@@ -20,9 +21,6 @@ export default new Vuex.Store({
       state.carShops.push(paylod.shop);
     },
     replaceCarShops(state, paylod) {  // {shops: []}
-      paylod.shops.forEach(function (item) {
-        item.count = 1;
-      })
       state.carShops = paylod.shops;
     },
     // 改变指定id的数据的count
@@ -32,6 +30,9 @@ export default new Vuex.Store({
       })
 
       shop.count = paylod.count;
+    },
+    removeShopById(state,payload){  // {skuId}
+      state.carShops = state.carShops.filter(item => item.id != payload.skuId)
     }
   },
   actions: {
@@ -78,19 +79,36 @@ export default new Vuex.Store({
         })
       })
     },
-    // 一上来就要拿到加入购物车的商品的id
+    // 一上来就要拿到加入购物车的商品的id以及数量
     getCarShopIds (store) {
       // 拿到加入购物车的商品的所有id
       addCarCount().then((params) => {
+        let idsList = params.data.idsList
+        // [{id,count}]
         let ids = params.data.idsList.map(function (item) {
           return item.skuId
         })
         
         getAddCarData({ skuId: ids.join(',')}).then((params) => {
           let list = params.data.data.list;
+          // [{id,price,shop_info}]
+
+          list.forEach(function (info) {
+            let item = idsList.find(option => info.id == option.skuId)
+            console.log(item)
+            info.count = item.count;
+          })
+
           store.commit('replaceCarShops', { shops: list})
         })
 
+      })
+    },
+    // 删除指定id的商品
+    removeCountAction (store, payload) {
+      
+      removeCounBySkuId(payload).then(function (params) {
+        store.commit('removeShopById', payload)
       })
     }
   }
