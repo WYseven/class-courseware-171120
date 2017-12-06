@@ -14,6 +14,32 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     carShops: []  // 存放的是加入购物车的数据
+  },  // 对state中的数据进一步处理，需要写在getter中，类似于组件的computed
+  getters: {
+    totalCountAndMoney (state) {
+
+      /*state.carShops.reduce(function (total,item) {
+        return {
+          totalCount: total.totalCount + parseInt(item.count),
+          totalMoney: parseInt(item.count) * parseInt(item.price)
+        }
+      },{
+        totalCount: 0,
+        totalMoney: 0
+      })*/
+
+      let total = {
+        totalCount: 0,
+        totalMoney: 0
+      }
+
+      state.carShops.forEach(function(item){
+        total.totalCount += parseInt(item.count)
+        total.totalMoney += parseInt(item.count) * parseInt(item.price)
+      })
+
+      return total
+    }
   },
   mutations: {
     changeCarShops(state, paylod) {  // {shop: {}}
@@ -106,7 +132,7 @@ export default new Vuex.Store({
     },
     // 删除指定id的商品
     removeCountAction (store, payload) {
-      
+
       removeCounBySkuId(payload).then(function (params) {
         store.commit('removeShopById', payload)
       })

@@ -42,8 +42,12 @@
             </ul>
           </div>
           <div class="nav-cart-total">
-            <p>共 <strong class="ng-binding">1</strong> 件商品</p>
-            <h5>合计：<span class="price-icon">¥</span><span class="price-num ng-binding" ng-bind="cartMenu.totalPrice">49</span></h5>
+            <p>共 <strong class="ng-binding">{{totalCountAndMoney.totalCount}}</strong> 件商品</p>
+            <h5>合计：<span class="price-icon">¥</span>
+              <span class="price-num ng-binding" ng-bind="cartMenu.totalPrice">
+                {{totalCountAndMoney.totalMoney}}
+              </span>
+            </h5>
             <h6>
               <a ng-href="http://www.smartisan.com/shop/#/cart" class="nav-cart-btn" href="http://www.smartisan.com/shop/#/cart">去购物车</a>
             </h6>
@@ -59,6 +63,9 @@
     computed: {
       shops () {
         return this.$store.state.carShops
+      },
+      totalCountAndMoney () {
+        return this.$store.getters.totalCountAndMoney
       }
     },
     methods: {
