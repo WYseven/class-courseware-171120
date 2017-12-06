@@ -79,8 +79,7 @@ export default new Vuex.Store({
 
       if (shop){
         let count = shop.count;
-        
-        payload.count = ++count;
+        payload.count = payload.isMinus ? --count : ++count;
       }else{
         payload.count  = 1;
       }

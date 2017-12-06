@@ -6,11 +6,11 @@
 						<h2>购物清单</h2>
 					</div>
 					<div class="cart-inner">
-						<div class="empty-label hide">
+						<div :class="{hide: carShops.length}" class="empty-label">
 							<h3>您的购物车中还没有商品</h3>
-							<a class="link" href="javascript:;">现在选购</a>
+              <router-link  class="link" to='/shop/list'>现在选购</router-link>
 						</div>
-						<div>
+						<div v-show="carShops.length">
 							<div class="cart-table-title">
 								<span class="name">商品信息</span>
 								<span class="operation">操作</span>
@@ -30,7 +30,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="cart-bottom-bg fix-bottom">
+					<div class="cart-bottom-bg fix-bottom" v-show="carShops.length">
 						<div class="cart-bar-operation">
 							<div>
 								<div class="choose-all js-choose-all">
@@ -76,8 +76,6 @@ import CarItem from './carItem'
     computed : {
       // 从vuex中取出carShops
       carShops () {
-        console.log(1235555555)
-        console.log(this.$store.state.carShops)
         return this.$store.state.carShops
       }
     }

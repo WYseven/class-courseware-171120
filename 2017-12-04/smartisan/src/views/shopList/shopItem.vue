@@ -72,19 +72,24 @@ import {addCarCount,getAddCarData} from '@/getData/method'
         // 发请求？？？？今天的任务是这个发请求
       // 已经购买了商品，告诉后端数量了，第二次在发送的时候，
       // 只需要发送购买的数量，就没必要再获取商品的数据了
-        /* addCarCount({skuId,count:1})
-        .then( (params) => {
-            getAddCarData({skuId}).then((params2) => {
-              let shop = params2.data.data.list[0];
-            console.log(shop)
-              this.$store.commit('changeCarShops', {
-                shop
-              })
+    // 你的购买的数量已经等于最大购买数量，就不能添加
 
-            })
-            // console.log(params.data)
-        }) */
+    // 思路：在商品列表页，拿到添加到购物车的id，然后那这个id去vuex的state的carShops去找一下
+    // 拿到id对应的数据，拿到最大数
 
+    // 要么已经加入了，要么没有加入
+    let carShops = this.$store.state.carShops;
+
+    let item = carShops.find(item => item.id == skuId)
+    
+    if(item){
+      console.log(item)
+      if(item.count == item.shop_info.limit_num){
+        alert('商品已达到最大可购买数量，无法继续添加')
+        return;
+      }
+    }
+      
         this.$store.dispatch('addCarCountAction', {skuId})
 
       }
