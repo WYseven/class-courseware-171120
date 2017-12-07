@@ -5,6 +5,7 @@ import Shop from '@/views/shop'
 
 import ShopList from '@/views/shopList/shopList'
 import Car from '@/views/shopCar/car'
+import Detail from '@/views/shopDetail/detail'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
           path: 'car',
           name: 'Car',
           component: Car
+        },
+        {
+          path: 'detail/:bigId',
+          name: 'Detail',
+          component: Detail
         }
       ]
     }

@@ -21,3 +21,9 @@ npm i vuex --save
 
 props => data => computed
 
+商品详情页拼写的地址
+--------------
+http://localhost:8080/shop/detail/1000360?id=100036001
+
+http://localhost:8080/shop/detail/1000378?id=100037801
+

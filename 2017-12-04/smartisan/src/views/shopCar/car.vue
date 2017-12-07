@@ -50,23 +50,28 @@
 							<div class="shipping-box">
 								<div class="shipping-total shipping-num">
 									<h4 class="">
-										已选择 <i>0</i> 件商品
+										已选择 <i>{{checkedShopCountAndMoney.checkedCount}}</i> 件商品
 									</h4>
 									<h5>
-										共计 <i >3</i> 件商品
+										共计 <i >{{totalCountAndMoney.totalCount}}</i> 件商品
 									</h5>
 								</div>
 								<div class="shipping-total shipping-price">
 									<h4 class="">
-										应付总额：<span>￥</span><i >0</i> 
+										应付总额：<span>￥</span><i >{{checkedShopCountAndMoney.checkedMoney}}</i> 
 									</h4>
 									<h5 class="shipping-tips">
 										应付总额不含运费
 									</h5>
-									
 								</div>
 							</div>
-							<span class="jianguo-blue-main-btn big-main-btn js-checkout disabled-btn"><a>现在结算</a></span>
+							<span 
+								class="jianguo-blue-main-btn big-main-btn js-checkout"
+								:class="{'disabled-btn': !checkedShopCountAndMoney.checkedCount}"
+								@click="checkoutShop"
+							>
+								<a>现在结算</a>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -89,7 +94,16 @@ import CarItem from './carItem'
 
         // 给计算属性赋值
         this.isCheckedAll = !this.isCheckedAll
-      }
+			},
+			checkoutShop () {
+				// 如果没选中的，那么就不能跳转
+				if(this.checkedShopCountAndMoney.checkedCount === 0){
+					return;
+				}
+				this.$router.push({
+					path: '/shop/checkout'
+				})
+			}
     },
     computed : {
       // 从vuex中取出carShops
@@ -109,7 +123,22 @@ import CarItem from './carItem'
         console.log(shops)
 
         return shops
-      },
+			},
+			// 那些事选中的，计算那些checked为true
+			checkedShop () {
+				return this.carShops.filter((item) => item.checked)
+			},
+			checkedShopCountAndMoney () {
+				return this.checkedShop.reduce((defaults,item) => {
+									return {
+										checkedCount: defaults.checkedCount + parseInt(item.count),
+										checkedMoney: defaults.checkedMoney + parseInt(item.count) * parseInt(item.price)
+									}
+								},{
+									checkedCount: 0,
+									checkedMoney: 0
+								})
+			},
       isCheckedAll : {
         get () {
           // 只要有一个没被选中，返回就是false
@@ -123,7 +152,11 @@ import CarItem from './carItem'
             item.checked = newValue
           })
         }
-      }
+			},
+			// 保存的是总价喝总数量
+			totalCountAndMoney () {
+				return this.$store.getters.totalCountAndMoney
+			}
     }
   }
 </script>
