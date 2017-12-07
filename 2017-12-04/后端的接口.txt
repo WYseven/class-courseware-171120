@@ -112,3 +112,197 @@
 			}
 		]
 	}
+
+
+请求地址： GET /shop_details
+作用： 获取商品的详情 （用在详情页）
+
+请求数据：
+	id：获取详情商品的id
+响应数据：
+	{
+	    "code": 0,
+	    "data":
+	    {
+	        "id": 100027001,  // 当前查看详情的商品的id
+	        "in_stock": true, // 有货，可以直接加购物车 tue有货，false无货
+	        "name": 
+	        "price": 
+	        "spu_id": 1000270, // 大类商品的id
+	        "attr_info":   // 当前商品的规格
+	        {
+	            "1": 
+	            {
+	                "spec_id": "1",  // 这是颜色的大id
+	                "spec_name": "颜色",
+	                "value": "银色",
+	                "spec_value_id": "86"  // 其中一个颜色的id
+	            },
+	            "19":
+	            {
+	                "spec_id": "19",     // 这个是接口的大Id
+	                "spec_name": "接口",
+	                "value": "3.5 mm",
+	                "spec_value_id": "204" // 其中一个接口的大Id
+	            }
+	        },
+	        "shop_info":  // 商品的详细信息
+	        {
+	            "ali_image": "https://resource.smartisan.com/resource/74b7284f703535111c46f1e34b0b1132.jpg",
+	            "ali_images": [  // 左侧要展示和切换的图
+	                "https://resource.smartisan.com/resource/74b7284f703535111c46f1e34b0b1132.jpg",
+	                "https://resource.smartisan.com/resource/92abaf872de5ef505ac19fecadf18410.jpg",
+	                "https://resource.smartisan.com/resource/ed34eba493ef851f7f44d9f2f9ea7559.jpg",
+	                "https://resource.smartisan.com/resource/25e5d302235a2c2321afc56ac3a9db74.jpg"
+	            ],
+	            "sub_title": "极简造型、复合振膜、专业级调音",
+	            "title": "Smartisan S-1001 圈铁线控耳机",
+	            
+	        },
+	        "spec_json": [  // 当前商品的数据
+	        {
+	            "spec_id": "1",
+	            "spec_value_id": "86",
+	            "show_name": "银色",
+	            "item_value": "银色",
+	            // 是需要在颜色块中展示的图片
+	            "image": "https://resource.smartisan.com/resource/88df40ec05f4f2f3f7e8568aea6a9a8f.jpg"
+	        },
+	        {
+	            "spec_id": "19",
+	            "spec_value_id": "204",
+	            "show_name": "3.5 mm",
+	            "item_value": "3.5 mm",
+	            "image": null
+	        }],
+	        "spec_v2": [  // 这一类商品分了多个个规格，以及每一个规范中的详细信息
+	        {
+	            "spec_id": "1",
+	            "spec_name": "颜色",
+	            "visiable": "0",
+	            "show_type": "2",
+	            "spec_values": [
+	            {
+	                "id": "35",
+	                "spec_id": "1",
+	                "item_value": "红色",
+	                "show_name": "红色",
+	                "image": "https://resource.smartisan.com/resource/5d360536ee512d99aaa2d95a7f045317.jpg",
+	                "show_short_name": "红色",
+	                "color_value": "#111111"
+	            },
+	            {
+	                "id": "86",
+	                "spec_id": "1",
+	                "item_value": "银色",
+	                "image": "https://resource.smartisan.com/resource/88df40ec05f4f2f3f7e8568aea6a9a8f.jpg",
+	                "show_name": "银色",
+	                "show_short_name": "银色",
+	                "color_value": "#111111"
+	            }],
+	            "image_pre": "http://img01.smartisanos.cn/",
+	            "image_name": "origin.jpg"
+	        },
+	        {
+	            "spec_id": "19",
+	            "spec_name": "接口",
+	            "visiable": "0",
+	            "show_type": "1",
+	            "spec_values": [
+	            {
+	                "id": "204",
+	                "spec_id": "19",
+	                "item_value": "3.5 mm",
+	                "show_name": "3.5 mm",
+	                "show_short_name": "3.5 mm"
+	            },
+	            {
+	                "id": "205",
+	                "spec_id": "19",
+	                "item_value": "Type-C",
+	                "show_name": "Type-C",
+	                "show_short_name": "Type-C"
+	            }],
+	            "image_pre": "",
+	            "image_name": ""
+	        }]
+	        "sku_list": [  // 这一大类中所有的商品的id
+	        {
+	            "id": 100027001,
+	            "attr_info":  // 每一个商品的规格
+	            {
+	                "1":
+	                {
+	                    "spec_id": "1",
+	                    "spec_name": "颜色",
+	                    "value": "银色",
+	                    "spec_value_id": "86"
+	                },
+	                "19":
+	                {
+	                    "spec_id": "19",
+	                    "spec_name": "接口",
+	                    "value": "3.5 mm",
+	                    "spec_value_id": "204"
+	                }
+	            }
+	        },
+	        {
+	            "id": 100027002,
+	            "attr_info":
+	            {
+	                "1":
+	                {
+	                    "spec_id": "1",
+	                    "spec_name": "颜色",
+	                    "value": "银色",
+	                    "spec_value_id": "86"
+	                },
+	                "19":
+	                {
+	                    "spec_id": "19",
+	                    "spec_name": "接口",
+	                    "value": "Type-C",
+	                    "spec_value_id": "205"
+	                }
+	            }
+	        },
+	        {
+	            "id": 100027004,
+	            "attr_info":
+	            {
+	                "1":
+	                {
+	                    "spec_id": "1",
+	                    "spec_name": "颜色",
+	                    "value": "红色",
+	                    "spec_value_id": "35"
+	                },
+	                "19":
+	                {
+	                    "spec_id": "19",
+	                    "spec_name": "接口",
+	                    "value": "Type-C",
+	                    "spec_value_id": "205"
+	                }
+	            }
+	        }]
+	    }
+	}
+
+	// 精简版
+
+	{
+		code:0
+		data:{
+			id : 100027004  // 当前商品的id
+			in_stock : true  // 是否有货
+			price : 199 价格
+			spu_id : 1000270 // 大类的id
+			attr_info: 当前商品的规格 <对象>
+			shop_info：商品的数据，里面图片地址和title和小标题
+			spec_json： 当前商品的规格 <数组>
+			spec_v2： 这一大类商品所有有的规则
+			sku_list：这一大类商品所有的商品
+		}
+	}

@@ -6,7 +6,8 @@ let urlMap = {
   'shop_list': '/shop_list',
   'count': '/count',
   'add_car': '/add_car',
-  'remove_count': '/remove_count'
+  'remove_count': '/remove_count',
+  'shop_details': '/shop_details'
 }
 
 export function getShopListMethod() {
@@ -34,6 +35,16 @@ export function removeCounBySkuId(obj) {  // {skuId}
   return Axios.get(base + urlMap.remove_count, {
     params: {
       skuId: obj.skuId
+    }
+  })
+}
+
+// 获取商品的详情
+
+export function getShopDetailsById(obj) {  // {id}
+  return Axios.get(base + urlMap.shop_details, {
+    params: {
+      id: obj.id
     }
   })
 }

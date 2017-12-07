@@ -68,9 +68,13 @@
 		</div>
 </template>
 <script>
+import {getShopDetailsById} from '@/getData/method'
   export default {
     created () {
-      console.log(this.$route.query.id)
+      let id = this.$route.query.id;
+      getShopDetailsById({id}).then((params) => {
+        console.log(params.data)
+      })
     }
   }
 </script>

@@ -12,15 +12,11 @@ let detailsUrl = `https://www.smartisan.com/product/skus/`;
 
 router.get('/shop_details',function (req,res){
     let {id} = req.query;
-    console.log(id)
     let url = detailsUrl + id+'?with_spu_sku=true&with_stock=true';
-    console.log(url)
     request.get(url, function (error,responese,body) {
       if(error){
-        
         return
       }
-     
       let d = JSON.parse(body);
      
       res.send(filtershopDetails(d))

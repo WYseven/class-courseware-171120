@@ -117,10 +117,10 @@ function filtershopDetails(datas){
         ali_image,
         ali_images,
         sub_title,
-        title,
-        spec_json,
-        spec_v2
-      } 
+        title
+      },
+      spec_json,
+      spec_v2
     }
   }
   d.data.sku_list = datas.data.sku_list.map(function(item){
