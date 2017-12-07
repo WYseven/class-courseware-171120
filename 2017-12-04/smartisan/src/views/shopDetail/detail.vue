@@ -1,45 +1,41 @@
 <template>
-  <div id="main">
+  <div id="main" v-if='shopDetailList.shop_info' >
 			<div class="store-content item">
 				<div class="item-box">
 					<div class="gallery-wrapper">
-						<div class="gallery">
-							<div class="thumbnail">
-								<!-- <ul>
-									<li class="on"><img src="./img/goods/ss1.jpg"></li>
-									<li><img src="./img/goods/ss2.jpg"></li>
-									<li><img src="./img/goods/ss3.jpg"></li>
-									<li><img src="./img/goods/ss4.jpg"></li>
-									<li><img src="./img/goods/ss5.jpg"></li>
-								</ul> -->
-							</div>
-							<div class="thumb">
-								<!-- <ul>
-									<li class="on"><img src="./img/goods/b1.png"></li>
-									<li><img src="./img/goods/b1.png"></li>
-									<li><img src="./img/goods/b1.png"></li>
-									<li><img src="./img/goods/b1.png"></li>
-									<li><img src="./img/goods/b1.png"></li>
-								</ul> -->
-							</div>
-						</div>
+						<tab-img 
+              :imgs="shopDetailList.shop_info.ali_images">
+            </tab-img>
 					</div>
 					<div class="banner">
 						<div class="sku-custom-title">
 							<div class="params-price">
-								<span><em>¥</em><i>199</i></span>
+								<span><em>¥</em><i>{{shopDetailList.price}}</i></span>
 							</div>
 							<div class="params-info">
-								<h4>Smartisan 快充移动电源 10000mAh</h4>
-								<h6>10000mAh 双向快充、轻盈便携、高标准安全保护</h6>
+								<h4>{{shopDetailList.shop_info.title}}</h4>
+								<h6>{{shopDetailList.shop_info.sub_title}}</h6>
 							</div>
 						</div>
 						<div class="sku-dynamic-params-panel">
-							<div class="sku-dynamic-params clear">
-								<span class="params-name">颜色</span>
-								<ul class="params-colors">
-									<li class="cur">
-										<a><img src="http://img01.smartisanos.cn/attr/v2/1000299/B37F37544921114CEF1EC01ED4DF44E4/20X20.jpg"></a>
+							<div 
+                :key="spec.spec_id"
+                v-for="spec in shopDetailList.spec_v2" 
+                class="sku-dynamic-params clear"
+              >
+								<span class="params-name">{{spec.spec_name}}</span>
+								<ul 
+                  :class="{'params-colors': spec.spec_id == 1,'params-normal': spec.spec_id != 1}"
+                >
+									<li 
+                    :class="{'cur': shopDetailList.attr_info[spec.spec_id].spec_value_id == values.id}" 
+                    :key="values.id"
+                    v-for="values in spec.spec_values"
+                  >
+										<a v-if="spec.spec_id == 1"><img :src="values.image"></a>
+                    <a v-if="spec.spec_id != 1">
+                      <span>{{values.show_name}}</span>
+                    </a>
 									</li>
 								</ul>
 							</div>
@@ -69,12 +65,57 @@
 </template>
 <script>
 import {getShopDetailsById} from '@/getData/method'
+import TabImg from './tabImg'
   export default {
+    data () {
+      return {
+        //没问题：shopDetailList.shop_info
+        // 有问题：shopDetailList.shop_info.ali_imgs
+        shopDetailList: {}  // 一上来数据是空的，所以找两层会报错
+      }
+    },
+    components: {
+      TabImg
+    },
     created () {
       let id = this.$route.query.id;
       getShopDetailsById({id}).then((params) => {
-        console.log(params.data)
+        // 从后端拿数据
+        this.shopDetailList = params.data.data
       })
     }
   }
 </script>
+
+<style lang="css">
+.params-normal {
+    float: left;
+    line-height: 36px;
+    margin: -10px 0 0 -10px;
+    width: 402px;
+}
+.params-normal>li {
+    float: left;
+    margin: 10px 0 0 10px;
+}
+.params-normal>li.cur a {
+    border: 1px solid #999;
+    border: 0 solid rgba(226,226,226,1);
+    box-shadow: inset 0 0 0 2px #B2B2B2;
+}
+.params-normal>li a {
+    display: block;
+    min-width: 16px;
+    padding: 0 10px;
+    text-align: center;
+    color: #757575;
+    border: 1px solid #dbdbdb;
+    border: 0 solid rgba(226,226,226,1);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #dbdbdb;
+}
+.params-normal>li.disable a {
+	cursor: not-allowed;
+  opacity: .6;
+}
+</style>

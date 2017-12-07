@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+
+    </style>
+    <script>
+    let d = {
+		    "attr_info":
+		    {
+		        "1":
+		        {
+		            "spec_id": "1",
+		            "spec_name": "颜色",
+		            "value": "红色",
+		            "spec_value_id": "35"
+		        },
+		        "19":
+		        {
+		            "spec_id": "19",
+		            "spec_name": "接口",
+		            "value": "Type-C",
+		            "spec_value_id": "205"
+		        }
+		    },
+		    "spec_v2": [
+		    {
+		        "spec_id": "1",
+		        "spec_name": "颜色",
+		        "visiable": "0",
+		        "show_type": "2",
+		        "spec_values": [
+		        {
+		            "id": "35",
+		            "spec_id": "1",
+		            "item_value": "红色",
+		            "show_name": "红色",
+		            "image": "https://resource.smartisan.com/resource/5d360536ee512d99aaa2d95a7f045317.jpg",
+		            "show_short_name": "红色",
+		            "color_value": "#111111"
+		        },
+		        {
+		            "id": "86",
+		            "spec_id": "1",
+		            "item_value": "银色",
+		            "image": "https://resource.smartisan.com/resource/88df40ec05f4f2f3f7e8568aea6a9a8f.jpg",
+		            "show_name": "银色",
+		            "show_short_name": "银色",
+		            "color_value": "#111111"
+		        }],
+		        "image_pre": "http://img01.smartisanos.cn/",
+		        "image_name": "origin.jpg"
+		    },
+		    {
+		        "spec_id": "19",
+		        "spec_name": "接口",
+		        "visiable": "0",
+		        "show_type": "1",
+		        "spec_values": [
+		        {
+		            "id": "204",
+		            "spec_id": "19",
+		            "item_value": "3.5 mm",
+		            "show_name": "3.5 mm",
+		            "show_short_name": "3.5 mm"
+		        },
+		        {
+		            "id": "205",
+		            "spec_id": "19",
+		            "item_value": "Type-C",
+		            "show_name": "Type-C",
+		            "show_short_name": "Type-C"
+		        }],
+		        "image_pre": "",
+		        "image_name": ""
+		    }]
+			}
+
+		for(var i = 0; i < d.spec_v2.length; i++){
+			for( var j = 0; j < d.spec_v2[i].spec_values.length; j++ ){
+				let guize = d.spec_v2[i].spec_values[j];
+				let id =  guize.spec_id
+				if(d.attr_info[id].spec_value_id == guize.id){
+					console.log('我要的g规格'+guize.show_name);
+				}
+			}
+		}
+    
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

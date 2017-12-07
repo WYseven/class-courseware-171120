@@ -302,6 +302,7 @@
 			attr_info: 当前商品的规格 <对象>
 			shop_info：商品的数据，里面图片地址和title和小标题
 			spec_json： 当前商品的规格 <数组>
+			
 			spec_v2： 这一大类商品所有有的规则
 			sku_list：这一大类商品所有的商品
 		}
