@@ -45,7 +45,7 @@ export default new Vuex.Store({
   },
   mutations: {
     changeCarShops(state, paylod) {  // {shop: {}}
-      paylod.shop.count = 1;  // 添加属性记录这个商品的数量
+      paylod.shop.count = paylod.count ? paylod.count : 1;  // 添加属性记录这个商品的数量
       state.carShops.push(paylod.shop);
     },
     replaceCarShops(state, paylod) {  // {shops: []}
@@ -77,16 +77,25 @@ export default new Vuex.Store({
         return item.id == payload.skuId
       })
 
+      // 商品是否已经存在购物车
+
       if (shop){
-        let count = shop.count;
-        payload.count = payload.isMinus ? --count : ++count;
+        // 没有传入count，说明是加减一件商品
+        if (!payload.count){
+          let count = shop.count;
+          payload.count = payload.isMinus ? --count : ++count;
+        }
+        
       }else{
-        payload.count  = 1;
+        // 传过来了count，就传count个
+        payload.count = payload.count ? payload.count : 1;
       }
+
+      console.log(payload.count)
 
       addCarCount(payload).then((params) => {
         if(!shop){
-          store.dispatch('getAddCarDataAction', { skuId: payload.skuId })
+          store.dispatch('getAddCarDataAction', { skuId: payload.skuId, count: payload.count })
         }else{
           // 只需要改变count值
           store.commit('changeCarShopsCount', {
@@ -102,7 +111,8 @@ export default new Vuex.Store({
       getAddCarData(payload).then((params) => {
         let shop = params.data.data.list[0];
         store.commit('changeCarShops', {
-          shop
+          shop,
+          count: payload.count
         })
       })
     },

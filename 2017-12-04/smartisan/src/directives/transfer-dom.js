@@ -1,6 +1,6 @@
 // Thanks to: https://github.com/airyland/vux/blob/v2/src/directives/transfer-dom/index.js
 // Thanks to: https://github.com/calebroseland/vue-dom-portal
-
+// https://github.com/iview/iview/blob/2.0/src/directives/transfer-dom.js
 /**
  * Get target DOM Node
  * @param {(Node|string|Boolean)} [node=document.body] DOM Node, CSS selector, or Boolean

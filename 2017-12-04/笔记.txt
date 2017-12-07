@@ -27,5 +27,9 @@ http://localhost:8080/shop/detail/1000360?id=100036001
 
 http://localhost:8080/shop/detail/1000378?id=100037801
 
+vue的组件库
+---------------
+iView https://www.iviewui.com/components/modal  pc端
 
+vux https://vux.li/#/  移动端
 

@@ -43,16 +43,16 @@
 								<div class="params-name">数量</div>
 								<div class="params-detail clear">
 									<div class="item-num js-select-quantity">
-										<span class="down down-disabled">-</span>
-										<span class="num">1</span>
-										<span class="up up-disabled">+</span>
+										<span @click="minusHandle" class="down" :class='{"down-disabled": num == 1}'>-</span>
+										<span class="num">{{num}}</span>
+										<span @click="addHandle" class="up" :class='{"down-disabled": num == 5}'>+</span>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="sku-status">
 							<div class="cart-operation-wrapper clearfix">
-								<span class="blue-title-btn js-add-cart">
+								<span @click="addCar" class="blue-title-btn js-add-cart">
                   <a>加入购物车</a>
                 </span>
 								<span class="gray-title-btn"><a>现在购买</a></span>
@@ -61,21 +61,28 @@
 					</div>
 				</div>
 			</div>
+      <Modal v-model='visble'>
+        <div class="confirm-msg">商品已达到最大可购买数量，无法继续添加</div>
+      </Modal>
 		</div>
 </template>
 <script>
 import {getShopDetailsById} from '@/getData/method'
 import TabImg from './tabImg'
+import Modal from '@/components/modal'
   export default {
     data () {
       return {
         //没问题：shopDetailList.shop_info
         // 有问题：shopDetailList.shop_info.ali_imgs
-        shopDetailList: {}  // 一上来数据是空的，所以找两层会报错
+        shopDetailList: {},  // 一上来数据是空的，所以找两层会报错
+        num: 1,
+        visble: false
       }
     },
     components: {
-      TabImg
+      TabImg,
+      Modal
     },
     created () {
       let id = this.$route.query.id;
@@ -83,6 +90,39 @@ import TabImg from './tabImg'
         // 从后端拿数据
         this.shopDetailList = params.data.data
       })
+    },
+    methods: {
+      minusHandle () {
+        if(this.num == 1) return;
+        this.num--
+      },
+      addHandle(){
+        if(this.num == 5) return;
+        this.num++
+      },
+      addCar () {
+        let skuId = this.shopDetailList.id;
+
+        // 如果购物车中没有这个商品，就发送的count为this.num
+        // 购物车中已经存在了，加减的商品数量和购物车中数量的和是否超过了购买的最大数
+        // 超过：提提醒不能购买；没有超过，count就为加减的数量和购物车的和
+
+        let carShops = this.$store.state.carShops;
+
+         let item = carShops.find(item => item.id == skuId)
+        let count = this.num
+         if(item){  // 已经存在购物车
+         console.log(item.count + count)
+            if(parseInt(item.count) + parseInt(count) > 5){
+               this.visble = true;
+              return
+            }else{
+              count = parseInt(item.count) + parseInt(count)
+            }
+         }
+
+        this.$store.dispatch('addCarCountAction', {skuId,count:count})
+      }
     }
   }
 </script>

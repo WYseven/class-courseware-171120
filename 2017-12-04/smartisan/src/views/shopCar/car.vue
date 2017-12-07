@@ -25,6 +25,7 @@
                     :key="item.id"
                     v-for="item in carShops"
                     :shop="item"
+										@remove="removehandle"
                   ></car-item>
 								</div>
 							</div>
@@ -76,20 +77,39 @@
 					</div>
 				</div>
 			</div>
+			<Modal v-model='visble' @ok="okHandle">
+        <div class="confirm-msg">您确认删除该商品吗？</div>
+      </Modal>
 		</div>
 </template>
 <script>
 import CarItem from './carItem'
+import Modal from '@/components/modal'
   export default {
     data () {
       return {
-        // isCheckedAll:true
+				// isCheckedAll:true,
+				visble: false,
+				removeIdObj: ''
       }
     },
     components: {
-      CarItem
+			CarItem,
+			Modal
     },
     methods: {
+			removehandle(skuIdObj){
+				this.visble = true;
+				// 存一下要删除的id的对象
+				this.removeIdObj = skuIdObj
+			},
+			okHandle(){  // 点击了弹框确定按钮
+				if(this.removeIdObj){
+					// 删除
+					this.$store.dispatch('removeCountAction', this.removeIdObj)
+					this.removeIdObj = '';
+				}
+			},
       checkedAllHandle () {
 
         // 给计算属性赋值

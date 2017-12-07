@@ -45,6 +45,7 @@
 </template>
 <script>
 import {addCarCount,getAddCarData} from '@/getData/method'
+
   export default {
     data () {
       return  {
@@ -95,7 +96,8 @@ import {addCarCount,getAddCarData} from '@/getData/method'
     if(item){
       console.log(item)
       if(item.count == item.shop_info.limit_num){
-        alert('商品已达到最大可购买数量，无法继续添加')
+        // alert('商品已达到最大可购买数量，无法继续添加')
+        this.$emit('count')
         return;
       }
     }

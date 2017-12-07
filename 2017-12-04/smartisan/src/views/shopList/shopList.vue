@@ -11,28 +11,44 @@
 				</div>
 				<div class="gray-box">
 					<div class="item-box">
-            <shop-item :key="item.id" v-for="item in list" :shop-item="item"></shop-item>
+            <shop-item 
+              :key="item.id" 
+              v-for="item in list" 
+              :shop-item="item"
+              @count="countHandle"
+            ></shop-item>
 					</div>
 				</div>
 			</div>
+      <Modal v-model='visble'>
+        <div class="confirm-msg">商品已达到最大可购买数量，无法继续添加</div>
+      </Modal>
 		</div>
 </template>
 <script>
   import {getShopListMethod} from '@/getData/method'
   import ShopItem from './shopItem.vue'
+  import Modal from '@/components/modal'
   export default {
     data () {
      return {
-        list: []
+        list: [],
+        visble:false
      }
     },
     components: {
-      ShopItem
+      ShopItem,
+      Modal
     },
     created () {
       getShopListMethod().then( (params) => {
        this.list = params.data.data.list
       })
+    },
+    methods: {
+      countHandle () {
+        this.visble = true;
+      }
     }
   }
 </script>

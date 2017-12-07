@@ -85,7 +85,11 @@
     methods: {
       remove () {
         // 派发一个action，告诉要删除的skuId
-         this.$store.dispatch('removeCountAction', {skuId: this.shopItem.id})
+        // 不能直接删除
+
+        // 告诉父级，有弹框
+        this.$emit('remove',{skuId: this.shopItem.id})
+        // this.$store.dispatch('removeCountAction', {skuId: this.shopItem.id})
       },
       // 减
       minusHandle () {
