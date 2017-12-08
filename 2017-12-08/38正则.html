@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			let p = '18612987076'
+
+			let re = /^(\d{3})(\d{4})(\d{4})$/
+			console.log(re.test(p));
+
+			let newP = p.replace(re,function ($0,$1,$2,$3){
+				console.log($0);	
+				console.log($1);
+				return $1 + '*'.repeat($2.length)	+ $3
+			})
+
+			console.log(newP);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

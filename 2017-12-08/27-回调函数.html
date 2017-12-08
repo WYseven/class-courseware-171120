@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+			/*
+				回调函数：把一个函数作为参数传给另一个函数，这个函数称之为回调函数
+
+				在一个函数的内部执行之后，要执行多行不同代码，可以使用回调函数
+			*/
+			function fn(){
+				console.log(123);
+			}
+
+			function func(callback){
+				for( var i = 0; i < 1000; i++ ){}
+
+				// 执行10行代码
+
+					callback()
+			}
+
+			/*
+				fn称之为回到函数
+				func称之为高阶函数
+			*/
+
+			func(function (){
+				console.log(456);	
+				console.log(456);	
+				console.log(456);	
+				console.log(456);	
+				console.log(456);	
+				console.log(456);	
+				console.log(456);	
+			})
+			func(function (){
+				console.log(1);	
+				console.log(1);	
+				console.log(1);	
+				console.log(1);	
+				console.log(1);	
+				console.log(1);	
+				console.log(1);	
+			})
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

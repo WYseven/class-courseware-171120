@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			let o = {
+				a: {
+					a: {
+						a: {
+							a:{
+								a: {
+									a: {
+										a:0
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			function fn(obj){
+				if(obj.a && typeof obj.a === 'object'){
+					fn(obj.a)
+					
+				}else{
+					console.log(obj.a);
+				}
+			}
+
+			fn(o)
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

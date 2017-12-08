@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				创建对象的方式
+					{}
+					new
+					Object.create(o)：以o作为原型创建新对象
+			*/
+
+			let obj = {};
+
+			console.log(obj);  // 会默认继承Object.prototype
+
+			let obj2 = Object.create({a:1})
+
+			console.log(obj2);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

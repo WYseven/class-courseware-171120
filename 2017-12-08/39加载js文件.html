@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+			
+		</script>
+	</head>
+
+	<body>
+		<script>
+			document.onclick  =function (){
+				let script  =document.createElement("script");
+				script.src = './a.js'
+				document.body.appendChild(script);
+
+				// js文件加载完之触发这个事件
+				script.onload = function (){
+					run()		
+				}
+
+				
+			}
+		</script>
+	</body>
+</html>

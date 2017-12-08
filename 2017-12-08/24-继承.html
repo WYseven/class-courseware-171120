@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				继承：让一个对象拥有另一个对象的属性或方法
+			*/
+
+			// 父类
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			// 子类
+			function Coder(name,age,money){
+				// 类式继承（构造函数继承）
+				// 调用父类的构造函数，把构造函数的this给为子类的this
+				Person.call(this,name,age)
+
+				this.money = money;
+			}
+
+			let c = new Coder()
+
+			console.log(c);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			// let声明的变量不会挂载window上
+		  	let name="window";
+	    	let obj={
+	        	name:"lee",
+	        	sayName(){
+					 return function () {
+
+						return this.name;
+					 }
+				}
+	   	 };
+	    console.log(obj.sayName()());
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

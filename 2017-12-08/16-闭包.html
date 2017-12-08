@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			// 每一次执行函数，都会重新创建函数中的变量
+			/*
+				动态作用域：根据函数的调用的位置不同，找函数调用位置的作用的变量
+				静态作用域：函数定义的时候已经确定了作用域的位置
+			*/
+			function fn(){
+				var a = 10;
+				//a++;
+				function fn2(){
+					a++
+					console.log(a);
+				}
+				console.log(a)
+				return fn2;
+			}
+
+			let f = fn(); // f === fn2
+
+			f();
+			f();
+
+			let f2 = fn();
+
+			f2()
+
+			f = function (){
+				console.log('miaov');	
+			}
+
+			document.onclick = function (){
+				let a = 10000;
+				f();
+			}
+
+
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

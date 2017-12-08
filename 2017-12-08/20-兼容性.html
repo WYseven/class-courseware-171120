@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script>
+			
+			/*
+				node.currentStyle 返回一个对象  ie6.7.8
+				getComputedStyle(node) 返回一个对象 chrome FF
+
+				firstElementChild:
+					标准浏览器中 获取第一个元素节点
+					ie下不支持
+				firstChild：
+					标准浏览器中获取第一个子节点
+					ie下获取第一个元素节点
+
+			*/
+
+			window.onload = function(){
+				var box = document.getElementById('box');
+
+				//console.log( getComputedStyle(box).width );
+				// console.log(box.currentStyle.width);
+
+				console.log(box.firstElementChild); // 获取元素节点
+				console.log(box.firstChild.nodeName);  // 获取第一个子节点
+			};
+
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<p>123</p>
+			<p>123</p>
+			<p>123</p>
+			<p>123</p>
+			<p>123</p>
+		</div>
+	</body>
+</html>

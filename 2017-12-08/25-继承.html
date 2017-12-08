@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				继承：让一个对象拥有另一个对象的属性或方法
+			*/
+
+			// 父类
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+
+			Person.prototype.say = function (){
+				console.log('我的名字是'+this.name);	
+			}
+
+			// 子类
+			function Coder(name,age,money){
+				// 类式继承（构造函数继承）
+				// 调用父类的构造函数，把构造函数的this给为子类的this
+				Person.call(this,name,age)
+
+				this.money = money;
+			}
+			// 把父级原型对象给到子类的原型,引用同一个对象
+			// Coder.prototype = Person.prototype
+
+			// 把通过父类创建一个对象，改写子类的原型，当找一个属性的时候，就会找到父类的原型上
+
+			// 原型继承 -> 延长原型链
+			//Coder.prototype = new Person
+
+			//Coder.prototype = create(new Person)
+			// 原型继承 -> 延长原型链
+			//Coder.prototype = create(Person.prototype)
+			//Coder.prototype = Object.create(Person.prototype)
+			
+
+			// 基于传入的对象作为原型，创建一个新对象
+			function create(o){
+				let f = function (){}
+				f.prototype = o;
+				return new f()	
+			}
+
+			Coder.prototype.coding = function (){
+				console.log('会写代码');	
+			}
+
+			let c = new Coder('leo',30,100000)
+
+			console.log(c);
+
+			console.log(Person.prototype);
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

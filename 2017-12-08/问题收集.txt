@@ -35,10 +35,10 @@ js代码中什么时候必须要加分号什么时候不用
 如何从能写出demo提升到能将组合成整个项目，希望能分享一点经验
 
 
-search,hash不理解，页面的返回
+hash不理解，页面的返回
 
 关于块级作用域  
-	let name="window";
+	  let name="window";
     	let obj={
         	name:"lee",
         	sayName(){

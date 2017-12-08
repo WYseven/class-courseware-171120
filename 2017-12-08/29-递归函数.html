@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			let o = {
+				a: {
+					a: {
+						a: {
+							a:{
+								a: {
+									a: {
+										a:0
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			function deepClone(o){
+				let newObj = o instanceof Array ? [] : {};	
+
+				for(let attr in o){
+					if(typeof o[attr] === "object"){
+						newObj[attr] = deepClone(o[attr])
+					}else{
+						newObj[attr] =  o[attr]
+					}
+					
+				}
+
+				return newObj
+
+			}
+			deepClone(o).abc = 10;
+			console.log(o);
+
+
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

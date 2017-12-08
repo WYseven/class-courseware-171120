@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body style="height: 1000px;">
+		<input type="button" id="btn" />
+		<script>
+			// ie低版本，获取是对象，是存在全局的一个变量中，event
+			window.onload = function(){
+				document.onclick = function (ev){
+					alert(ev)
+					alert(event)
+				}
+				btn.onclick = function (ev){
+					alert(ev)
+					alert(event)
+				}
+			};	
+		</script>
+	</body>
+</html>

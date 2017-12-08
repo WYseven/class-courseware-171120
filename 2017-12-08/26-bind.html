@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				用来改变函数this指向的，并不会直接执行函数
+			*/
+			function fn(){
+				console.log(this);
+			}
+			let f = fn.bind([1,2,3])
+			f()
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

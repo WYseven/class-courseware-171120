@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			function Foo() {  
+			    getName = function () {   
+			        console.log (1);   
+			    };
+			    return this;  
+			}  
+			Foo.getName = function () {   
+			    console.log (2);   
+			};  
+			Foo.prototype.getName = function () {   
+			    console.log(10);   
+			};  
+			var getName = function () {   
+			    console.log (4);  
+			};  
+			function getName() {   
+			    console.log (5);  
+			}  
+			  
+			// 请写出一下的输出结果  
+			Foo.getName();   
+			getName();   
+			Foo().getName();    
+			getName();    
+			new Foo.getName();    
+			new Foo().getName();    
+			new new Foo().getName(); 
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>
