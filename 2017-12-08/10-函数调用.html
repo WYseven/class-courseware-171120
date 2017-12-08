@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				call
+				apply
+				函数的方法
+			*/
+			function fn(){
+				console.log(11111);	
+			}
+
+			fn.call()
+
+			setTimeout(fn,1000)
+
+			let o = {}
+			o.f = fn;
+
+			o.f()
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

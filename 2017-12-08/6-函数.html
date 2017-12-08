@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				对象
+					具有属性和方法
+				简单的值不是对象，所有不拥有属性和方法
+				内置有包装对象的方法，把简单的值包装成对象，再调用方法
+
+				每一次包装对象调用之后，就被销毁
+			*/	
+			/*let str = 'miaov';  // 简单的值,不是对象
+
+			str.slice(1); // 把str包装成对象，调用slice，调用完之后，销毁
+			str.abc = 10;
+
+			console.log(str.abc)*/
+
+			/*
+
+				函数是可执行的对象，作用把多行封装在函数中，可以复用
+			*/
+			
+			function fn(){
+				console.log(122);
+				console.log(122);
+				console.log(122);
+				console.log(122);
+				console.log(122);
+			}
+
+			fn.miaov = 10;
+
+			console.log(fn.miaov);
+
+			fn()
+			fn()
+			fn()
+			fn()
+			fn()
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

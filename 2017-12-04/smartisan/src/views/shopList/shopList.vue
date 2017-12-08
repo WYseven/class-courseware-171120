@@ -20,25 +20,30 @@
 					</div>
 				</div>
 			</div>
-      <Modal v-model='visble'>
+      <Modal v-model='visble' title="提示">
         <div class="confirm-msg">商品已达到最大可购买数量，无法继续添加</div>
+        <Radio v-model="single">Radio</Radio>
+        <DatePicker 
+          type="daterange" 
+          placement="bottom-end" placeholder="Select date" 
+        style="width: 200px"></DatePicker>
       </Modal>
 		</div>
 </template>
 <script>
   import {getShopListMethod} from '@/getData/method'
   import ShopItem from './shopItem.vue'
-  import Modal from '@/components/modal'
+
   export default {
     data () {
      return {
         list: [],
-        visble:false
+        visble:false,
+        single: false
      }
     },
     components: {
-      ShopItem,
-      Modal
+      ShopItem
     },
     created () {
       getShopListMethod().then( (params) => {

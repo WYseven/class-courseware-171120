@@ -33,3 +33,50 @@ iView https://www.iviewui.com/components/modal  pc端
 
 vux https://vux.li/#/  移动端
 
+找vue的插件项目：https://github.com/vuejs/awesome-vue
+
+https://iview.github.io/iview-admin/#/international/index
+
+DW 			hbuild
+编辑器：
+sublime
+atom
+vscode
+
+webstorm  IDE
+
+版本管理：
+	git 
+		clone
+		分支
+		解决冲突
+		merge
+
+	svn 拉代码checkout
+		更新代码updata
+		提交代码commit
+
+		先updata在commit
+
+	jq
+		读过jq的源码吗？
+			整体架构
+			订阅发布模式
+			深浅拷贝
+			ajax的API,封装ajax
+			插件
+	vue
+	react
+
+	设计模式
+	面向对象
+	性能优化
+
+	大公司，注重基础!!!
+
+	高程设计
+
+	
+
+
+

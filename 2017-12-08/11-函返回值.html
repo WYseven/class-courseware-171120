@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				call
+				apply
+				函数的方法
+			*/
+			
+			let fn  =function (){
+				console.log(123);
+				return {
+						a:1
+					}
+			}
+			console.log(fn());
+
+			let abc = function (){
+				for( var i = 0; i < 1000000000; i++ ){
+					console.log(i);
+					if(i === 10){
+						break;  // 终止所在for循环的执行
+						//return; // 终止这个函数的执行
+					}		
+				}
+
+				console.log('我走了');	
+			}
+
+			abc();
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+			//console.log(3.toString()) ; // 解析为小数，会报错
+
+			console.log(3..toString()) ; 
+			console.log((3).toString()) ; 
+			console.log(3 .toString()) ;
+			console.log([1,2,3].toString()); 
+			console.log({a:1}.toString()); 
+			console.log(Array.prototype);
+
+			console.dir(new Date());
+
+
+			// 最顶层的Object.prototype上有一个toString方法
+
+			// 要把数组转成字符串的时候，需要调用toString方法，调用的不是Object.prototype的toString，因为Array.prototype有一个toString
+
+
+			// 创建的对象，都会默认继承Object.prototype
+
+			// 直接调用Object.prototype的toString
+
+			console.log([1,2,3].toString());
+
+			console.log( Object.prototype.toString.call([1,2,3]) ); // [object Array]
+			console.log( Object.prototype.toString.call('miaov') ); // [object String
+			console.log({}.toString()); // [object, Object]
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

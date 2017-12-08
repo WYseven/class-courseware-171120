@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			// 标识符：函数名，变量名，统称为标识符
+			// 作用域：标识符可访问的范围、标识起作用的范围
+			/*
+				全局范围
+				局部（函数）范围
+					能够划分作用域就是函数
+			*/
+
+			let  a = 10; 
+
+			function fn(){
+				let b = 10;	
+
+				console.log(a);
+
+				function fn2(){
+					console.log(a);	
+					console.dir(fn2);
+				}
+
+				fn2()
+
+				
+			}
+
+			fn()
+
+			console.dir(fn);
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

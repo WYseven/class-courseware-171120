@@ -1,0 +1,55 @@
+
+参数为Object。
+var url = 'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&d&enabled';
+parseParam(url);
+/**
+结果：
+{
+   user: 'anonymous',
+   id: [123, 456], // 重复出现的 key 要组装成数组，能被转成数字的就转成数字类型
+   city: '北京', // 中文
+   enabled: true, // 未指定值的 key 约定值为 true
+}
+*/
+
+// 有一个全局对象 a，有一个全局函数 b，实现一个方法bindData，执行后，a的任何赋值都会触发b的执行。
+var a = {
+    key:1
+};
+function b(){
+    console.log('a的值发生改变');
+}
+bindData();
+a.key = 2; // 此时输出 a的值发生改变
+
+
+// 下面五段代码分别输出什么？并且什么时候输出什么？
+ 
+ 
+for(var i = 0; i < 5; i++) {
+    console.log(i);
+}
+for(var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000 * i);
+}
+for(var i = 0; i < 5; i++) {
+    (function(i) {
+        setTimeout(function() {
+            console.log(i);
+        }, i * 1000);
+    })(i);
+}
+for(var i = 0; i < 5; i++) {
+    (function() {
+        setTimeout(function() {
+            console.log(i);
+        }, i * 1000);
+    })(i);
+}
+for(var i = 0; i < 5; i++) {
+    setTimeout((function(i) {
+        console.log(i);
+    })(i), i * 1000);
+}
